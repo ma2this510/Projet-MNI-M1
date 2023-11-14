@@ -4,8 +4,6 @@ from scipy.integrate import solve_ivp
 
 np.random.seed(40)
 
-# ATTENTION LA PARALLELISATION NE MARCHE PAS
-
 class OSCI:
     def __init__(self, N, K):
         """

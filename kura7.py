@@ -7,6 +7,9 @@ from tqdm import tqdm
 np.random.seed(40)
 
 
+
+# ATTENTION LA PARALLELISATION NE MARCHE PAS
+# IL FAUT UTILISER joblib
 class OSCI:
     def __init__(self, N, K):
         self.N = N
