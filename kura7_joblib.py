@@ -13,7 +13,10 @@ class OSCI:
         self.K = K
 
         self.pulse = np.random.normal(0, 1, N)
+
+        # Besoin de verifier si c'est bien ca
         self.pulse -= np.mean(self.pulse)
+        # self.pulse[-1] = np.sum(self.pulse[:-1])
 
         self.omega = np.random.uniform(-np.pi, np.pi, N)
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
@@ -21,7 +24,7 @@ class OSCI:
     def KURA(self, t, omega):
         ordre = np.sum(np.exp(1j * omega)) / self.N
         omega_dot = self.pulse + self.K * \
-            np.abs(ordre) * np.sin(np.imag(ordre) - omega)
+            np.abs(ordre) * np.sin(np.angle(ordre) - omega)
         return omega_dot
 
     def solve(self, tmax, step):
