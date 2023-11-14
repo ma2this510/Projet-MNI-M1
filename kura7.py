@@ -14,7 +14,6 @@ class OSCI:
     def __init__(self, N, K):
         self.N = N
         self.K = K
-        self.t_n = 0
 
         self.pulse = np.random.normal(0, 1, N)
         self.pulse -= np.mean(self.pulse)
@@ -25,19 +24,18 @@ class OSCI:
     def KURA(self, t, omega):
         ordre = np.sum(np.exp(1j * omega)) / self.N
         omega_dot = self.pulse + self.K * \
-            np.abs(ordre) * np.sin(np.imag(ordre) - omega)
+            np.abs(ordre) * np.sin(np.angle(ordre) - omega)
         return omega_dot
 
     def solve(self, tmax, step):
-        t = np.linspace(self.t_n, tmax, step)
+        t = np.linspace(0, tmax, step)
 
         sol = solve_ivp(fun=self.KURA, t_span=(
-            self.t_n, tmax), y0=self.omega, t_eval=t)
+            0, tmax), y0=self.omega, t_eval=t)
 
         self.sol = sol
         self.omega = sol.y[:, -1]
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
-        self.t_n += t[-1]
 
         return sol
 
@@ -66,7 +64,7 @@ class OSCI:
 
     def get_abs_ordre(self):
         self.abs_list = np.abs(
-            np.sum(np.exp(1j * self.sol.y), axis=0)) / self.N
+            np.sum(np.exp(1j * self.sol.y[:, self.sol.t >= 50]), axis=0)) / self.N
         return self.abs_list
 
 
