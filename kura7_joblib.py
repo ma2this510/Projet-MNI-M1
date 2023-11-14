@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
-from multiprocessing import Pool
+from joblib import Parallel, delayed
 from tqdm import tqdm
 
 np.random.seed(40)
@@ -11,7 +11,6 @@ class OSCI:
     def __init__(self, N, K):
         self.N = N
         self.K = K
-        self.t_n = 0
 
         self.pulse = np.random.normal(0, 1, N)
         self.pulse -= np.mean(self.pulse)
@@ -26,44 +25,20 @@ class OSCI:
         return omega_dot
 
     def solve(self, tmax, step):
-        t = np.linspace(self.t_n, tmax, step)
+        t = np.linspace(0, tmax, step)
 
         sol = solve_ivp(fun=self.KURA, t_span=(
-            self.t_n, tmax), y0=self.omega, t_eval=t)
+            0, tmax), y0=self.omega, t_eval=t)
 
         self.sol = sol
         self.omega = sol.y[:, -1]
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
-        self.t_n += t[-1]
 
         return sol
 
-    def graph(self):
-        circle = plt.Circle((0, 0), 1, fill=False, color='r')
-        fig, axs = plt.subplots(1, 2)
-        axs[0].add_artist(circle)
-        axs[0].set_xlim(-1.5, 1.5)
-        axs[0].set_ylim(-1.5, 1.5)
-        axs[0].scatter(np.cos(self.omega), np.sin(self.omega), color='b')
-        axs[0].scatter(np.real(self.ordre), np.imag(self.ordre), color='g')
-        axs[0].set_aspect('equal')
-        axs[0].grid(True, which='both')
-        axs[0].set_title(f'K = {self.K} and t = {self.t_n}')
-        axs[0].set_xlabel('$\cos$ and $real$')
-        axs[0].set_ylabel('$\sin$ and $imag$')
-        axs[1].plot(np.linspace(0, self.t_n, len(
-            self.abs_list)), self.abs_list)
-        axs[1].set_xlabel('t')
-        axs[1].set_ylabel('abs(ordre)')
-        axs[1].set_title(f'$r(t)$')
-        axs[1].set_aspect('equal')
-        plt.tight_layout()
-        # plt.savefig(f'kura4_{self.N}.pdf')
-        plt.show()
-
     def get_abs_ordre(self):
         self.abs_list = np.abs(
-            np.sum(np.exp(1j * self.sol.y), axis=0)) / self.N
+            np.sum(np.exp(1j * self.sol.y[:, self.sol.t >= 50]), axis=0)) / self.N
         return self.abs_list
 
 
@@ -98,10 +73,9 @@ if __name__ == '__main__':
     print("Starting pool")
     print("---------------------------------------------------------------------------")
 
-    with Pool(num_proc) as pool:
-        inputs = [(k_list, N_list[i], Nrep_list[i], i)
-                  for i in range(len(N_list))]
-        outputs = pool.map(main_compute, inputs)
+    inputs = [(k_list, N_list[i], Nrep_list[i], i) for i in range(len(N_list))]
+    outputs = Parallel(n_jobs=num_proc)(
+        delayed(main_compute)(inp) for inp in inputs)
 
     print("---------------------------------------------------------------------------")
     print("Pool finished")

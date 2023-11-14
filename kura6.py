@@ -4,6 +4,7 @@ from scipy.integrate import solve_ivp
 
 np.random.seed(40)
 
+# ATTENTION LA PARALLELISATION NE MARCHE PAS
 
 class OSCI:
     def __init__(self, N, K):
@@ -91,7 +92,7 @@ class OSCI:
         plt.show()
 
     def get_abs_ordre(self) :
-        self.abs_list = np.abs(np.sum(np.exp(1j * self.sol.y), axis=0)) / self.N
+        self.abs_list = np.abs(np.sum(np.exp(1j * self.sol.y[t >= 50]), axis=0)) / self.N
         return self.abs_list
 
 k_list = np.linspace(1, 2, 51)
