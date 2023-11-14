@@ -19,7 +19,6 @@ class OSCI:
         self.t_n = 0
 
         self.pulse = np.random.normal(0, 1, N)
-        self.pulse -= np.mean(self.pulse)
 
         self.omega = np.random.uniform(-np.pi, np.pi, N)
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N

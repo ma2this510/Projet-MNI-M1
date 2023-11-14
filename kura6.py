@@ -21,9 +21,6 @@ class OSCI:
         self.pulse = np.random.normal(0, 1, N)
         self.pulse -= np.mean(self.pulse)
 
-        #Attention aux sens physique : dernier termes non tiré selon la distribution
-        self.pulse[-1] = - np.sum(self.pulse[:-1])
-
         self.omega = np.random.uniform(-np.pi, np.pi, N)
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
@@ -39,7 +36,8 @@ class OSCI:
         ndarray: The derivative of the phase angles of the oscillators.
         """
         ordre = np.sum(np.exp(1j * omega)) / self.N
-        self.abs_list = np.append(self.abs_list, np.abs(ordre))
+        if t > 50 :
+            self.abs_list = np.append(self.abs_list, np.abs(ordre))
         omega_dot = self.pulse + self.K * \
             np.abs(ordre) * np.sin(np.imag(ordre) - omega)
         return omega_dot
@@ -96,15 +94,21 @@ class OSCI:
     def get_abs_ordre(self) :
         return self.abs_list
 
-for k in np.linspace(1, 2, 6):
-    oscis = OSCI(100, k)
-    sol = oscis.solve(100, 201)
-    tmp = oscis.get_abs_ordre()
-    plt.plot(np.linspace(0, 100, len(tmp)), tmp, label=f'K = {k}')
+k_list = np.linspace(1, 2, 51)
+Nrep = 50
+abs_tot = np.empty((len(k_list), Nrep))
 
-plt.xlabel('t')
+for i, k in enumerate(k_list):
+    for j in range(Nrep):
+        oscis = OSCI(100, k)
+        sol = oscis.solve(100, 201)
+        abs_tot[i, j] = np.mean(oscis.get_abs_ordre())
+
+mean_abs_tot = np.mean(abs_tot, axis=1)
+plt.plot(k_list, mean_abs_tot)
+plt.xlabel('K')
 plt.ylabel('abs(ordre)')
-plt.legend()
+plt.title(f'Moyenne de abs(ordre) en fonction de K : {Nrep} répétitions')
 plt.tight_layout()
-plt.savefig('kura4.pdf')
+plt.savefig(f'kura6_{Nrep}.pdf')
 plt.show()
