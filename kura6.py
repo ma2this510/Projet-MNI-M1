@@ -28,7 +28,7 @@ class OSCI:
         self.pulse = np.random.normal(0, 1, N)
         self.pulse -= np.mean(self.pulse)
         self.pulse[-1] = -np.sum(self.pulse[:-1])
-        print(np.sum(self.pulse))
+        
         self.omega = np.random.uniform(-np.pi, np.pi, N)
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
@@ -64,22 +64,30 @@ class OSCI:
         sol = solve_ivp(fun=self.KURA, t_span=(
             self.t_n, tmax), y0=self.omega, t_eval=t)
 
-        abs_list = np.empty(step, dtype=np.cdouble)
-        print(sol.y.shape)
+        abs_list = np.empty(step)
+
+        # Enlever cette boucle et remplacer par express vectorise
         for i in range(step):
             tmp = sol.y[:, i]
-            abs_list[i]=np.sum(np.exp(1j * tmp)) / self.N
+            abs_list[i]=np.abs(np.sum(np.exp(1j * tmp))) / self.N
         self.omega = sol.y[:, -1]
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
         self.t_n += t[-1]
 
         return abs_list,t
 
-K = np.linspace(1, 2, 6)
-for i in K:
-    oscis = OSCI(100, i)
-    abs_ordre, t = oscis.solve(100, 201)
-    plt.plot(t, abs_ordre, label = str(i))
+K = np.linspace(1.4, 1.8, 25)
+N=100
+Nrep=10
+mean_ordre = np.empty((len(K), Nrep))
+
+for i in range(len(K)):
+    for j in range(Nrep):
+        oscis = OSCI(N, K[i])
+        abs_ordre, t = oscis.solve(N, 201)
+        mean_ordre[i, j] = np.mean(abs_ordre[t >= 50])
+        
+mean_mean_ordre = np.mean(mean_ordre, axis=1)  
     
-plt.legend()
-plt.savefig('kura4_100.pdf')
+plt.plot(K,mean_mean_ordre)
+plt.savefig(f'kura5_{Nrep}.pdf')

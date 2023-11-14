@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Tue Nov 14 11:00:38 2023
+
+@author: tradu
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
@@ -20,7 +27,8 @@ class OSCI:
 
         self.pulse = np.random.normal(0, 1, N)
         self.pulse -= np.mean(self.pulse)
-
+        self.pulse[-1] = -np.sum(self.pulse[:-1])
+        
         self.omega = np.random.uniform(-np.pi, np.pi, N)
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
@@ -36,8 +44,6 @@ class OSCI:
         ndarray: The derivative of the phase angles of the oscillators.
         """
         ordre = np.sum(np.exp(1j * omega)) / self.N
-        if t > 50 :
-            self.abs_list = np.append(self.abs_list, np.abs(ordre))
         omega_dot = self.pulse + self.K * \
             np.abs(ordre) * np.sin(np.imag(ordre) - omega)
         return omega_dot
@@ -55,56 +61,32 @@ class OSCI:
         """
         t = np.linspace(self.t_n, tmax, step)
 
-        self.abs_list = np.empty(0)
         sol = solve_ivp(fun=self.KURA, t_span=(
             self.t_n, tmax), y0=self.omega, t_eval=t)
+
+        abs_list = np.empty(step)
+
+        # Enlever cette boucle et remplacer par express vectorise
+        for i in range(step):
+            tmp = sol.y[:, i]
+            abs_list[i]=np.abs(np.sum(np.exp(1j * tmp))) / self.N
         self.omega = sol.y[:, -1]
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
         self.t_n += t[-1]
 
-        return sol
+        return abs_list,t
 
-    def graph(self):
-        """
-        Plots the current state of the oscillators.
+K = np.linspace(1, 2, 51)
+Nrep=10
+mean_ordre = np.empty((len(K), Nrep))
 
-        Creates a scatter plot of the current state of the oscillators, with the x-axis representing the cosine of the oscillator's phase and the y-axis representing the sine of the oscillator's phase. The plot also includes a circle with radius 1 centered at the origin, which represents the unit circle. The current order parameter is plotted as a green dot, and the current value of K and t_n are included in the plot title. The resulting plot is saved as a PDF file and displayed.
-        """
-        circle = plt.Circle((0, 0), 1, fill=False, color='r')
-        fig, axs = plt.subplots(1,2)
-        axs[0].add_artist(circle)
-        axs[0].set_xlim(-1.5, 1.5)
-        axs[0].set_ylim(-1.5, 1.5)
-        axs[0].scatter(np.cos(self.omega), np.sin(self.omega), color='b')
-        axs[0].scatter(np.real(self.ordre), np.imag(self.ordre), color='g')
-        axs[0].set_aspect('equal')
-        axs[0].grid(True, which='both')
-        axs[0].set_title(f'K = {self.K} and t = {self.t_n}')
-        axs[0].set_xlabel('$\cos$ and $real$')
-        axs[0].set_ylabel('$\sin$ and $imag$')
-        axs[1].plot(np.linspace(0, self.t_n, len(self.abs_list)), self.abs_list)
-        axs[1].set_xlabel('t')
-        axs[1].set_ylabel('abs(ordre)')
-        axs[1].set_title(f'$r(t)$')
-        axs[1].set_aspect('equal')
-        plt.tight_layout()
-        # plt.savefig(f'kura4_{self.N}.pdf')
-        plt.show()
-
-    def get_abs_ordre(self) :
-        return self.abs_list
-
-abs_tot = np.empty(51)
-k_list = np.linspace(1, 2, 51)
-for i, k in enumerate(k_list):
-    oscis = OSCI(100, k)
-    sol = oscis.solve(100, 201)
-    abs_tot[i] = np.mean(oscis.get_abs_ordre())
-
-plt.plot(k_list, abs_tot)
-plt.xlabel('K')
-plt.ylabel('abs(ordre)')
-plt.title('Moyenne de abs(ordre) en fonction de K')
-plt.tight_layout()
-plt.savefig('kura5.pdf')
-plt.show()
+for i in range(len(K)):
+    for j in range(Nrep):
+        oscis = OSCI(100, K[i])
+        abs_ordre, t = oscis.solve(100, 201)
+        mean_ordre[i, j] = np.mean(abs_ordre[t >= 50])
+        
+mean_mean_ordre = np.mean(mean_ordre, axis=1)  
+    
+plt.plot(K,mean_mean_ordre)
+plt.savefig(f'kura5_{Nrep}.pdf')
