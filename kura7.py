@@ -1,19 +1,14 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+from multiprocessing import Pool
+from tqdm import tqdm
 
 np.random.seed(40)
 
 
 class OSCI:
     def __init__(self, N, K):
-        """
-        Initializes the OSCI class with the given parameters.
-
-        Parameters:
-        N (int): The number of oscillators.
-        K (float): The coupling strength.
-        """
         self.N = N
         self.K = K
         self.t_n = 0
@@ -25,32 +20,12 @@ class OSCI:
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
     def KURA(self, t, omega):
-        """
-        Calculates the derivative of the phase angles of the oscillators.
-
-        Parameters:
-        t (float): The current time.
-        omega (ndarray): The current phase angles of the oscillators.
-
-        Returns:
-        ndarray: The derivative of the phase angles of the oscillators.
-        """
         ordre = np.sum(np.exp(1j * omega)) / self.N
         omega_dot = self.pulse + self.K * \
             np.abs(ordre) * np.sin(np.imag(ordre) - omega)
         return omega_dot
 
     def solve(self, tmax, step):
-        """
-        Solves the differential equation for the given time range.
-
-        Parameters:
-        tmax (float): The maximum time to solve for.
-        step (int): The number of time steps to use.
-
-        Returns:
-        OdeResult: The solution of the differential equation.
-        """
         t = np.linspace(self.t_n, tmax, step)
 
         sol = solve_ivp(fun=self.KURA, t_span=(
@@ -64,11 +39,6 @@ class OSCI:
         return sol
 
     def graph(self):
-        """
-        Plots the current state of the oscillators.
-
-        Creates a scatter plot of the current state of the oscillators, with the x-axis representing the cosine of the oscillator's phase and the y-axis representing the sine of the oscillator's phase. The plot also includes a circle with radius 1 centered at the origin, which represents the unit circle. The current order parameter is plotted as a green dot, and the current value of K and t_n are included in the plot title. The resulting plot is saved as a PDF file and displayed.
-        """
         circle = plt.Circle((0, 0), 1, fill=False, color='r')
         fig, axs = plt.subplots(1,2)
         axs[0].add_artist(circle)
@@ -94,21 +64,53 @@ class OSCI:
         self.abs_list = np.abs(np.sum(np.exp(1j * self.sol.y), axis=0)) / self.N
         return self.abs_list
 
-k_list = np.linspace(1, 2, 51)
-Nrep = 10
-abs_tot = np.empty((len(k_list), Nrep))
+def main_compute(args):
+    k_list, N, Nrep, process_id = args
+    print(f"Process {process_id} started")
 
-for i, k in enumerate(k_list):
-    for j in range(Nrep):
-        oscis = OSCI(100, k)
-        sol = oscis.solve(100, 201)
-        abs_tot[i, j] = np.mean(oscis.get_abs_ordre())
+    abs_tot = np.empty((len(k_list), Nrep))
 
-mean_abs_tot = np.mean(abs_tot, axis=1)
-plt.plot(k_list, mean_abs_tot)
-plt.xlabel('K')
-plt.ylabel('abs(ordre)')
-plt.title(f'Moyenne de abs(ordre) en fonction de K : {Nrep} répétitions')
-plt.tight_layout()
-# plt.savefig(f'kura6_{Nrep}.pdf')
-plt.show()
+    progress_bar = tqdm(total=len(k_list), position=process_id, desc=f"Process {process_id}")
+
+    for i, k in enumerate(k_list):
+        for j in range(Nrep):
+            oscis = OSCI(N, k)
+            sol = oscis.solve(100, 201)
+            abs_tot[i, j] = np.mean(oscis.get_abs_ordre())
+        progress_bar.update(1)
+
+    progress_bar.close()
+
+    mean_abs_tot = np.mean(abs_tot, axis=1)
+    print(f"Process {process_id} finished")
+    return mean_abs_tot
+
+
+if __name__ == '__main__':
+    num_proc = 5
+
+    k_list = np.linspace(1.4, 1.8, 25)
+    N_list = [100, 500, 2000, 5000, 15000]
+    Nrep_list = [200, 50, 20, 15, 10]
+
+    print("Starting pool")
+
+    with Pool(num_proc) as pool:
+        inputs = [(k_list, N_list[i], Nrep_list[i], i) for i in range(len(N_list))]
+        outputs = pool.map(main_compute, inputs)
+    
+    print("---------------------------")
+    print("Pool finished")
+
+    for i, result in enumerate(outputs):
+        plt.plot(k_list, result, label=f"N = {N_list[i]}", marker='o')
+    plt.xlabel('K')
+    plt.xlim(1.4, 1.8)
+    plt.ylabel('abs(ordre)')
+    plt.axis("equal")
+    plt.legend()
+    plt.title(f'Moyenne de abs(ordre) en fonction de K')
+    plt.tight_layout()
+    plt.savefig(f'kura7.pdf')
+    plt.show()
+
