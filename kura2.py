@@ -4,7 +4,8 @@ from scipy.integrate import solve_ivp
 
 np.random.seed(40)
 
-class OSCI :
+
+class OSCI:
     """
     A class representing a system of oscillators.
 
@@ -33,7 +34,7 @@ class OSCI :
         Plots the current state of the system on a complex plane and saves the plot as a PDF file.
     """
 
-    def __init__(self, N, K) :
+    def __init__(self, N, K):
         """
         Initializes the OSCI class.
 
@@ -51,7 +52,7 @@ class OSCI :
         self.omega = np.random.uniform(-np.pi, np.pi, N)
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
-    def KURA(self, t, omega) :
+    def KURA(self, t, omega):
         """
         Calculates the derivative of the oscillator frequencies at a given time t and frequency omega.
 
@@ -68,11 +69,11 @@ class OSCI :
             An array of values representing the derivative of the frequency of each oscillator.
         """
         ordre = np.sum(np.exp(1j * omega)) / self.N
-        omega_dot = self.pulse + self.K * np.abs(ordre) * np.sin(np.angle(ordre) - omega)
+        omega_dot = self.pulse + self.K * \
+            np.abs(ordre) * np.sin(np.angle(ordre) - omega)
         return omega_dot
 
-
-    def solve(self, tmax, step) :
+    def solve(self, tmax, step):
         """
         Solves the system using the KURA function and the Runge-Kutta 45 method.
 
@@ -89,15 +90,15 @@ class OSCI :
             An object containing the solution of the system.
         """
         t = np.linspace(self.t_n, tmax, step)
-        sol = solve_ivp(fun = self.KURA, t_span=(self.t_n, tmax), y0 = self.omega, t_eval=t)
-        self.omega = sol.y[:,-1]
+        sol = solve_ivp(fun=self.KURA, t_span=(
+            self.t_n, tmax), y0=self.omega, t_eval=t)
+        self.omega = sol.y[:, -1]
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
         self.t_n += tmax
 
-        return sol # Sert à rien mais bon
+        return sol  # Sert à rien mais bon
 
-
-    def graph(self) :
+    def graph(self):
         """
         Plots the current state of the system on a complex plane and saves the plot as a PDF file.
         """
@@ -113,6 +114,7 @@ class OSCI :
         ax.set_title(f'K = {self.K} and t = {self.t_n}')
         plt.savefig(f'kura2_{self.N}.pdf')
         plt.show()
+
 
 oscis = OSCI(100, 0)
 sol = oscis.solve(100, 201)
