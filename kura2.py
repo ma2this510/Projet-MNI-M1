@@ -70,8 +70,8 @@ class OSCI :
         ordre = np.sum(np.exp(1j * omega)) / self.N
         omega_dot = self.pulse + self.K * np.abs(ordre) * np.sin(np.angle(ordre) - omega)
         return omega_dot
-        
-    
+
+
     def solve(self, tmax, step) :
         """
         Solves the system using the KURA function and the Runge-Kutta 45 method.

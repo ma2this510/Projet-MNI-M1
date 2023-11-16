@@ -54,7 +54,7 @@ class OSCI:
 
         sol = solve_ivp(fun=self.KURA, t_span=(
             self.t_n, tmax), y0=self.omega, t_eval=t)
-        
+
         self.sol = sol
         self.omega = sol.y[:, -1]
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
