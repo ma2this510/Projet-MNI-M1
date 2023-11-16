@@ -21,7 +21,7 @@ class OSCI:
         self.pulse = np.random.normal(0, 1, N)
         self.pulse -= np.mean(self.pulse)
 
-        #Attention aux sens physique : dernier termes non tiré selon la distribution
+        # Attention aux sens physique : dernier termes non tiré selon la distribution
         self.pulse[-1] = - np.sum(self.pulse[:-1])
 
         self.omega = np.random.uniform(-np.pi, np.pi, N)
@@ -73,7 +73,7 @@ class OSCI:
         Creates a scatter plot of the current state of the oscillators, with the x-axis representing the cosine of the oscillator's phase and the y-axis representing the sine of the oscillator's phase. The plot also includes a circle with radius 1 centered at the origin, which represents the unit circle. The current order parameter is plotted as a green dot, and the current value of K and t_n are included in the plot title. The resulting plot is saved as a PDF file and displayed.
         """
         circle = plt.Circle((0, 0), 1, fill=False, color='r')
-        fig, axs = plt.subplots(1,2)
+        fig, axs = plt.subplots(1, 2)
         axs[0].add_artist(circle)
         axs[0].set_xlim(-1.5, 1.5)
         axs[0].set_ylim(-1.5, 1.5)
@@ -84,7 +84,8 @@ class OSCI:
         axs[0].set_title(f'K = {self.K} and t = {self.t_n}')
         axs[0].set_xlabel(r'$\cos$ and $real$')
         axs[0].set_ylabel(r'$\sin$ and $imag$')
-        axs[1].plot(np.linspace(0, self.t_n, len(self.abs_list)), self.abs_list)
+        axs[1].plot(np.linspace(0, self.t_n, len(
+            self.abs_list)), self.abs_list)
         axs[1].set_xlabel('t')
         axs[1].set_ylabel('abs(ordre)')
         axs[1].set_title(f'$r(t)$')
@@ -93,8 +94,9 @@ class OSCI:
         # plt.savefig(f'kura4_{self.N}.pdf')
         plt.show()
 
-    def get_abs_ordre(self) :
+    def get_abs_ordre(self):
         return self.abs_list
+
 
 for k in np.linspace(1, 2, 6):
     oscis = OSCI(100, k)
