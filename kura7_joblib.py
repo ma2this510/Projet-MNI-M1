@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
 from joblib import Parallel, delayed
 from tqdm import tqdm
+import time
 
 np.random.seed(40)
 
@@ -68,6 +69,7 @@ def main_compute(args):
 
 if __name__ == '__main__':
     num_proc = 5
+    start_time = time.time()
 
     k_list = np.linspace(1.4, 1.8, 25)
     N_list = [100, 500, 2000, 5000, 15000]
@@ -81,7 +83,7 @@ if __name__ == '__main__':
         delayed(main_compute)(inp) for inp in inputs)
 
     print("---------------------------------------------------------------------------")
-    print("Pool finished")
+    print("Pool finished in {:.2f} seconds".format(time.time() - start_time))
 
     for i, result in enumerate(outputs):
         plt.plot(k_list, result, label=f"N = {N_list[i]}", marker='o')
