@@ -4,6 +4,7 @@ from scipy.integrate import solve_ivp
 
 np.random.seed(40)
 
+
 class OSCI:
     def __init__(self, N, K):
         """
@@ -54,7 +55,7 @@ class OSCI:
 
         sol = solve_ivp(fun=self.KURA, t_span=(
             self.t_n, tmax), y0=self.omega, t_eval=t)
-        
+
         self.sol = sol
         self.omega = sol.y[:, -1]
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
@@ -69,7 +70,7 @@ class OSCI:
         Creates a scatter plot of the current state of the oscillators, with the x-axis representing the cosine of the oscillator's phase and the y-axis representing the sine of the oscillator's phase. The plot also includes a circle with radius 1 centered at the origin, which represents the unit circle. The current order parameter is plotted as a green dot, and the current value of K and t_n are included in the plot title. The resulting plot is saved as a PDF file and displayed.
         """
         circle = plt.Circle((0, 0), 1, fill=False, color='r')
-        fig, axs = plt.subplots(1,2)
+        fig, axs = plt.subplots(1, 2)
         axs[0].add_artist(circle)
         axs[0].set_xlim(-1.5, 1.5)
         axs[0].set_ylim(-1.5, 1.5)
@@ -80,7 +81,8 @@ class OSCI:
         axs[0].set_title(f'K = {self.K} and t = {self.t_n}')
         axs[0].set_xlabel('$\cos$ and $real$')
         axs[0].set_ylabel('$\sin$ and $imag$')
-        axs[1].plot(np.linspace(0, self.t_n, len(self.abs_list)), self.abs_list)
+        axs[1].plot(np.linspace(0, self.t_n, len(
+            self.abs_list)), self.abs_list)
         axs[1].set_xlabel('t')
         axs[1].set_ylabel('abs(ordre)')
         axs[1].set_title(f'$r(t)$')
@@ -89,9 +91,11 @@ class OSCI:
         # plt.savefig(f'kura4_{self.N}.pdf')
         plt.show()
 
-    def get_abs_ordre(self) :
-        self.abs_list = np.abs(np.sum(np.exp(1j * self.sol.y[:, sol.t >= 50]), axis=0)) / self.N
+    def get_abs_ordre(self):
+        self.abs_list = np.abs(
+            np.sum(np.exp(1j * self.sol.y[:, sol.t >= 50]), axis=0)) / self.N
         return self.abs_list
+
 
 k_list = np.linspace(1, 2, 51)
 Nrep = 10

@@ -3,13 +3,14 @@ import numpy as np
 
 np.random.seed(40)
 
-class OSCI :
-    def __init__(self, N) :
+
+class OSCI:
+    def __init__(self, N):
         self.N = N
         self.omega = np.random.uniform(-np.pi, np.pi, N)
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
-    def graph(self) :
+    def graph(self):
         circle = plt.Circle((0, 0), 1, fill=False, color='r')
         fig, ax = plt.subplots()
         ax.add_artist(circle)
