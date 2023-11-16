@@ -70,15 +70,14 @@ public:
         {
             Q[k] = 0.0;
             Q_dot[k] = 0.0;
-            Ek[k] = 0.0;
 
-            for (int j = 0; j <= N; j++)
+            for (int j = 1; j < N; j++)
             {
                 Q[k] += par[j].x * AA[k][j];
                 Q_dot[k] += par[j].v * AA[k][j];
-
-                Ek[k] += pow(Q_dot[k], 2) / 2.0 + omega[k] * omega[k] * pow(Q[k], 2) / 2.0;
             }
+
+            Ek[k] = pow(Q_dot[k], 2) / 2.0 + omega[k] * omega[k] * pow(Q[k], 2) / 2.0;
         }
 
         return Ek;
@@ -117,7 +116,7 @@ int main()
     int N = 32;
     int Nsteps = 100000;
     double pi = acos(-1);
-    double DeltaT = 0.01;
+    double DeltaT = 0.1;
     FPUT fput(N, 0.25, 1.0, DeltaT);
 
     //Write to energies_alpha.dat
@@ -133,7 +132,7 @@ int main()
         if (i % 100 == 0)
         {
             cout << "Step " << i << " done" << endl;
-            file << i << "\t" << fput.nrj << "\t" << fput.Ek[0] << "\t" << fput.Ek[1] << "\t" << fput.Ek[2] << "\t" << fput.Ek[3] << endl;
+            file << i << "\t" << fput.nrj << "\t" << fput.Ek[1] << "\t" << fput.Ek[2] << "\t" << fput.Ek[3] << "\t" << fput.Ek[4] << endl;
         }
     }
 
