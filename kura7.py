@@ -50,8 +50,8 @@ class OSCI:
         axs[0].set_aspect('equal')
         axs[0].grid(True, which='both')
         axs[0].set_title(f'K = {self.K} and t = {self.t_n}')
-        axs[0].set_xlabel('$\cos$ and $real$')
-        axs[0].set_ylabel('$\sin$ and $imag$')
+        axs[0].set_xlabel(r'$\cos$ and $real$')
+        axs[0].set_ylabel(r'$\sin$ and $imag$')
         axs[1].plot(np.linspace(0, self.t_n, len(
             self.abs_list)), self.abs_list)
         axs[1].set_xlabel('t')
