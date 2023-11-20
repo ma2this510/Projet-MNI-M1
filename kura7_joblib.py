@@ -9,7 +9,36 @@ np.random.seed(40)
 
 
 class OSCI:
+    """
+    Class representing an oscillator system.
+
+    Parameters:
+    - N (int): Number of oscillators in the system.
+    - K (float): Coupling strength between oscillators.
+
+    Attributes:
+    - N (int): Number of oscillators in the system.
+    - K (float): Coupling strength between oscillators.
+    - pulse (ndarray): Array of random values representing the pulse of each oscillator.
+    - omega (ndarray): Array of random values representing the initial phase of each oscillator.
+    - ordre (complex): Order parameter of the system.
+    - sol (scipy.integrate.OdeSolution): Solution of the differential equation.
+    - abs_list (ndarray): Array of absolute values of the order parameter at different time points.
+
+    Methods:
+    - KURA(t, omega): Calculates the derivative of the phase for each oscillator at a given time.
+    - solve(tmax, step): Solves the differential equation for the given time range and step size.
+    - get_abs_ordre(): Calculates the absolute values of the order parameter at specific time points.
+    """
+
     def __init__(self, N, K):
+        """
+        Initialize the OSCI class.
+
+        Args:
+        - N (int): Number of oscillators in the system.
+        - K (float): Coupling strength between oscillators.
+        """
         self.N = N
         self.K = K
 
@@ -23,12 +52,32 @@ class OSCI:
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
     def KURA(self, t, omega):
+        """
+        Calculates the derivative of the phase for each oscillator at a given time.
+
+        Args:
+        - t (float): Time.
+        - omega (ndarray): Array of phase values for each oscillator.
+
+        Returns:
+        - omega_dot (ndarray): Array of derivative of the phase for each oscillator.
+        """
         ordre = np.sum(np.exp(1j * omega)) / self.N
         omega_dot = self.pulse + self.K * \
             np.abs(ordre) * np.sin(np.angle(ordre) - omega)
         return omega_dot
 
     def solve(self, tmax, step):
+        """
+        Solves the differential equation for the given time range and step size.
+
+        Args:
+        - tmax (float): Maximum time.
+        - step (int): Number of steps.
+
+        Returns:
+        - sol (scipy.integrate.OdeSolution): Solution of the differential equation.
+        """
         t = np.linspace(0, tmax, step)
 
         sol = solve_ivp(fun=self.KURA, t_span=(
@@ -41,12 +90,27 @@ class OSCI:
         return sol
 
     def get_abs_ordre(self):
+        """
+        Calculates the absolute values of the order parameter at specific time points.
+
+        Returns:
+        - abs_list (ndarray): Array of absolute values of the order parameter.
+        """
         self.abs_list = np.abs(
             np.sum(np.exp(1j * self.sol.y[:, self.sol.t >= 50]), axis=0)) / self.N
         return self.abs_list
 
 
 def main_compute(args):
+    """
+    Main computation function.
+
+    Args:
+    - args (tuple): Tuple of arguments.
+
+    Returns:
+    - mean_abs_tot (ndarray): Array of mean absolute values of the order parameter.
+    """
     k_list, N, Nrep, process_id = args
 
     abs_tot = np.empty((len(k_list), Nrep))

@@ -6,10 +6,26 @@ from tqdm import tqdm
 
 np.random.seed(40)
 
-
 # ATTENTION LA PARALLELISATION NE MARCHE PAS
 # IL FAUT UTILISER joblib
+
+
 class OSCI:
+    """
+    Class representing an Oscillator System with Collective Interaction (OSCI).
+
+    Attributes:
+        N (int): Number of oscillators in the system.
+        K (float): Coupling strength between oscillators.
+
+    Methods:
+        __init__(self, N, K): Initializes the OSCI object with the given parameters.
+        KURA(self, t, omega): Calculates the derivative of the oscillator phases.
+        solve(self, tmax, step): Solves the OSCI system using numerical integration.
+        graph(self): Plots the phase distribution and order parameter.
+        get_abs_ordre(self): Calculates the absolute value of the order parameter over time.
+    """
+
     def __init__(self, N, K):
         self.N = N
         self.K = K
@@ -21,12 +37,32 @@ class OSCI:
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
     def KURA(self, t, omega):
+        """
+        Calculates the derivative of the oscillator phases.
+
+        Args:
+            t (float): Time.
+            omega (ndarray): Array of oscillator phases.
+
+        Returns:
+            ndarray: Array of derivatives of the oscillator phases.
+        """
         ordre = np.sum(np.exp(1j * omega)) / self.N
         omega_dot = self.pulse + self.K * \
             np.abs(ordre) * np.sin(np.angle(ordre) - omega)
         return omega_dot
 
     def solve(self, tmax, step):
+        """
+        Solves the OSCI system using numerical integration.
+
+        Args:
+            tmax (float): Maximum time.
+            step (int): Number of time steps.
+
+        Returns:
+            OdeSolution: Solution of the OSCI system.
+        """
         t = np.linspace(0, tmax, step)
 
         sol = solve_ivp(fun=self.KURA, t_span=(
@@ -39,6 +75,9 @@ class OSCI:
         return sol
 
     def graph(self):
+        """
+        Plots the phase distribution and order parameter.
+        """
         circle = plt.Circle((0, 0), 1, fill=False, color='r')
         fig, axs = plt.subplots(1, 2)
         axs[0].add_artist(circle)
@@ -62,12 +101,27 @@ class OSCI:
         plt.show()
 
     def get_abs_ordre(self):
+        """
+        Calculates the absolute value of the order parameter over time.
+
+        Returns:
+            ndarray: Array of absolute values of the order parameter.
+        """
         self.abs_list = np.abs(
             np.sum(np.exp(1j * self.sol.y[:, self.sol.t >= 50]), axis=0)) / self.N
         return self.abs_list
 
 
 def main_compute(args):
+    """
+    Computes the mean absolute value of the order parameter for different values of K and N.
+
+    Args:
+        args (tuple): Tuple containing the list of K values, N value, number of repetitions, and process ID.
+
+    Returns:
+        ndarray: Array of mean absolute values of the order parameter.
+    """
     k_list, N, Nrep, process_id = args
 
     abs_tot = np.empty((len(k_list), Nrep))

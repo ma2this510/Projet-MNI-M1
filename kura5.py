@@ -6,6 +6,19 @@ np.random.seed(40)
 
 
 class OSCI:
+    """
+    Represents a system of oscillators governed by the Kuramoto model.
+
+    Attributes:
+    N (int): The number of oscillators.
+    K (float): The coupling strength.
+    t_n (float): The current time.
+    pulse (ndarray): The pulse values for each oscillator.
+    omega (ndarray): The phase angles of the oscillators.
+    ordre (complex): The order parameter of the system.
+    abs_list (ndarray): The list of absolute values of the order parameter over time.
+    """
+
     def __init__(self, N, K):
         """
         Initializes the OSCI class with the given parameters.
@@ -93,6 +106,12 @@ class OSCI:
         plt.show()
 
     def get_abs_ordre(self):
+        """
+        Returns the list of absolute values of the order parameter over time.
+
+        Returns:
+        ndarray: The list of absolute values of the order parameter over time.
+        """
         return self.abs_list
 
 

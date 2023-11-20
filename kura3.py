@@ -6,6 +6,36 @@ np.random.seed(40)
 
 
 class OSCI:
+    """
+    A class representing a system of oscillators.
+
+    Attributes
+    ----------
+    N : int
+        The number of oscillators in the system.
+    K : float
+        The coupling strength between oscillators.
+    t_n : float
+        The current time of the system.
+    pulse : numpy.ndarray
+        An array of random values representing the initial pulse of each oscillator.
+    omega : numpy.ndarray
+        An array of random values representing the initial frequency of each oscillator.
+    ordre : complex
+        The order parameter of the system, calculated as the average of the complex exponential of the oscillator frequencies.
+
+    Methods
+    -------
+    __init__(self, N, K)
+        Initializes the OSCI class with the given parameters.
+    KURA(self, t, omega)
+        Calculates the derivative of the phase angles of the oscillators.
+    solve(self, tmax, step)
+        Solves the differential equation for the given time range.
+    graph(self)
+        Plots the current state of the oscillators.
+    """
+
     def __init__(self, N, K):
         """
         Initializes the OSCI class with the given parameters.
