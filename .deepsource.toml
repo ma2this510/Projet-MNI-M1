@@ -14,3 +14,7 @@ name = "autopep8"
 
 [[transformers]]
 name = "clang-format"
+
+[[analyzers]]
+name = "test-coverage"
+enabled = true
