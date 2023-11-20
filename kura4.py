@@ -101,7 +101,7 @@ class OSCI:
             self.abs_list)), self.abs_list)
         axs[1].set_xlabel('t')
         axs[1].set_ylabel('abs(ordre)')
-        axs[1].set_title(f'$r(t)$')
+        axs[1].set_title('$r(t)$')
         axs[1].set_aspect('equal')
         plt.tight_layout()
         # plt.savefig(f'kura4_{self.N}.pdf')
