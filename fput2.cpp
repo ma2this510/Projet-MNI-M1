@@ -88,12 +88,12 @@ public:
       for (int j = 0; j <= N; j++) {
         Q[k] += par[j].x * A_mat[k][j];
         Q_dot[k] += par[j].v * A_mat[k][j];
-
-        Ek[k] +=
-            pow(Q_dot[k], 2) / 2.0 + omega[k] * omega[k] * pow(Q[k], 2) / 2.0;
       }
-    }
 
+      Ek[k] += pow(Q_dot[k], 2) / 2.0 + pow(omega[k], 2) * pow(Q[k], 2) / 2.0;
+    
+    }
+    
     return Ek;
   }
 };
@@ -106,16 +106,18 @@ public:
 int main() {
   FPUT fput1(32, 1.0, 0.0);
   cout << "FPUT 1:" << endl;
+  vector<double> Ek = fput1.energie_modes();
 
   for (int i = 0; i < 4; i++) {
-    cout << fput1.energie_modes()[i] << endl;
+    cout << Ek[i] << endl;
   }
 
   FPUT fput2(32, 1.0, 0.25);
   cout << "FPUT 2:" << endl;
+  vector<double> Ek2 = fput2.energie_modes();
 
   for (int i = 0; i < 4; i++) {
-    cout << fput2.energie_modes()[i] << endl;
+    cout << Ek2[i] << endl;
   }
 
   return 0;
