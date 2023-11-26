@@ -6,7 +6,9 @@ g_prime = 0
 g = 1/np.sqrt(2*np.pi)
 k_c = 2/(np.pi * g)
 
-r = lambda x: np.sqrt(-16*(x - k_c)/(np.pi*(k_c**4)*g_prime_prime))
+
+def r(x): return np.sqrt(-16*(x - k_c)/(np.pi*(k_c**4)*g_prime_prime))
+
 
 x = np.linspace(0, 1.8, 1000)
 y = r(x)
