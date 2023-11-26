@@ -112,10 +112,10 @@ class OSCI:
         ax.set_aspect('equal')
         ax.grid(True, which='both')
         ax.set_title(f'K = {self.K} and t = {self.t_n}')
-        plt.savefig(f'kura2_{self.N}.pdf')
+        # plt.savefig(f'kura2_{self.N}.pdf')
         plt.show()
 
 
-oscis = OSCI(100, 0)
+oscis = OSCI(100, 8)
 sol = oscis.solve(100, 201)
 oscis.graph()
