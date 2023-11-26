@@ -156,12 +156,13 @@ if __name__ == '__main__':
     g = 1/np.sqrt(2*np.pi)
     k_c = 2/(np.pi * g)
 
-    r = lambda x: np.sqrt(-16*(x - k_c)/(np.pi*(k_c**4)*g_prime_prime))
+    def r(x): return np.sqrt(-16*(x - k_c)/(np.pi*(k_c**4)*g_prime_prime))
 
     # Graphique
     for i, result in enumerate(outputs):
         plt.plot(k_list, result, label=f"N = {N_list[i]}", marker='o')
-    plt.plot(k_list, r(k_list), label='Théorie', color='k', linestyle='--', linewidth=2, alpha=0.5)
+    plt.plot(k_list, r(k_list), label='Théorie', color='k',
+             linestyle='--', linewidth=2, alpha=0.5)
     plt.xlabel('K')
     plt.ylabel('abs(ordre)')
     plt.legend()
