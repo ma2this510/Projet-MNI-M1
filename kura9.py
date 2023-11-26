@@ -158,7 +158,8 @@ if __name__ == '__main__':
     g = 1/np.sqrt(2*np.pi)
     k_c = 2/(np.pi * g)
 
-    r_approx = lambda x: np.sqrt(-16*(x - k_c)/(np.pi*(k_c**4)*g_prime_prime))
+    def r_approx(x): return np.sqrt(-16*(x - k_c) /
+                                    (np.pi*(k_c**4)*g_prime_prime))
 
     def r(x):
         return x*(np.sqrt(2*np.pi)/4.0)*np.exp(-x**2/4.0)*(sp.iv(0, x**2/4.0) + sp.iv(1, x**2/4.0))
@@ -170,9 +171,12 @@ if __name__ == '__main__':
     for i, result in enumerate(outputs):
         plt.plot(k_list, result, label=f"$N = {N_list[i]}$", marker='o')
 
-    plt.axvline(x=k_c, label=r'$K_c$', color='r', linestyle='--', linewidth=2, alpha=0.5)   
-    plt.plot(k, r(y), label='Théorie Exacte', color='g', linestyle='--', linewidth=2, alpha=0.5)
-    plt.plot(k, r_approx(k), label='Théorie Approximation', color='k', linestyle='--', linewidth=2, alpha=0.5)
+    plt.axvline(x=k_c, label=r'$K_c$', color='r',
+                linestyle='--', linewidth=2, alpha=0.5)
+    plt.plot(k, r(y), label='Théorie Exacte', color='g',
+             linestyle='--', linewidth=2, alpha=0.5)
+    plt.plot(k, r_approx(k), label='Théorie Approximation',
+             color='k', linestyle='--', linewidth=2, alpha=0.5)
     plt.xlabel('K')
     plt.ylabel(r'$|r(K)|$')
     plt.legend()
