@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 from scipy.integrate import solve_ivp
+import scipy.special as sp
 from joblib import Parallel, delayed
 from tqdm import tqdm
 import time
@@ -153,21 +154,29 @@ if __name__ == '__main__':
 
     # Théorie : Limite thermodynamique
     g_prime_prime = -1/np.sqrt(2*np.pi)
+    g_prime = 0
     g = 1/np.sqrt(2*np.pi)
     k_c = 2/(np.pi * g)
 
-    r = lambda x: np.sqrt(-16*(x - k_c)/(np.pi*(k_c**4)*g_prime_prime))
+    r_approx = lambda x: np.sqrt(-16*(x - k_c)/(np.pi*(k_c**4)*g_prime_prime))
+
+    def r(x):
+        return x*(np.sqrt(2*np.pi)/4.0)*np.exp(-x**2/4.0)*(sp.iv(0, x**2/4.0) + sp.iv(1, x**2/4.0))
+
+    y = np.linspace(0.01, 1, 120)
+    k = y/r(y)
 
     # Graphique
     for i, result in enumerate(outputs):
         plt.plot(k_list, result, label=f"$N = {N_list[i]}$", marker='o')
 
-    plt.axvline(x=k_c, label=r'$K_c$', color='r', linestyle='--', linewidth=2, alpha=0.5)
-    plt.plot(k_list, r(k_list), label='Théorie', color='k', linestyle='--', linewidth=2, alpha=0.5)
+    plt.axvline(x=k_c, label=r'$K_c$', color='r', linestyle='--', linewidth=2, alpha=0.5)   
+    plt.plot(k, r(y), label='Théorie Exacte', color='g', linestyle='--', linewidth=2, alpha=0.5)
+    plt.plot(k, r_approx(k), label='Théorie Approximation', color='k', linestyle='--', linewidth=2, alpha=0.5)
     plt.xlabel('K')
-    plt.ylabel('abs(ordre)')
+    plt.ylabel(r'$|r(K)|$')
     plt.legend()
-    plt.title('Moyenne de abs(ordre) en fonction de K')
+    plt.title(r'Moyenne de $|r(K)|$ en fonction de $K$')
     plt.tight_layout()
-    plt.savefig('kura8.pdf')
+    plt.savefig('kura9.pdf')
     plt.show()
