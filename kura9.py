@@ -10,58 +10,42 @@ np.random.seed(40)
 
 
 class OSCI:
-    """
-    Class representing an oscillator system.
-
-    Parameters:
-    - N (int): Number of oscillators in the system.
-    - K (float): Coupling strength between oscillators.
-
-    Attributes:
-    - N (int): Number of oscillators in the system.
-    - K (float): Coupling strength between oscillators.
-    - pulse (ndarray): Array of random values representing the pulse of each oscillator.
-    - omega (ndarray): Array of random values representing the initial phase of each oscillator.
-    - ordre (complex): Order parameter of the system.
-    - sol (scipy.integrate.OdeSolution): Solution of the differential equation.
-    - abs_list (ndarray): Array of absolute values of the order parameter at different time points.
-
-    Methods:
-    - KURA(t, omega): Calculates the derivative of the phase for each oscillator at a given time.
-    - solve(tmax, step): Solves the differential equation for the given time range and step size.
-    - get_abs_ordre(): Calculates the absolute values of the order parameter at specific time points.
-    """
-
     def __init__(self, N, K):
         """
-        Initialize the OSCI class.
+        Initialise la classe OSCI.
 
-        Args:
-        - N (int): Number of oscillators in the system.
-        - K (float): Coupling strength between oscillators.
+        Paramètres :
+        - N (int) : Nombre d'oscillateurs.
+        - K (float) : Force de couplage.
+
+        Attributs :
+        - N (int) : Nombre d'oscillateurs.
+        - K (float) : Force de couplage.
+        - pulse (ndarray) : Tableau d'impulsions aléatoires.
+        - omega (ndarray) : tableau de fréquences angulaires aléatoires : Tableau de fréquences angulaires aléatoires.
+        - ordre (complexe) : Paramètre d'ordre.
+        - sol (scipy.integrate.OdeSolution) : Solution de l'équation différentielle.
         """
         self.N = N
         self.K = K
 
         self.pulse = np.random.normal(0, 1, N)
 
-        # Besoin de verifier si c'est bien ca
         self.pulse -= np.mean(self.pulse)
-        # self.pulse[-1] = np.sum(self.pulse[:-1])
 
         self.omega = np.random.uniform(-np.pi, np.pi, N)
         self.ordre = np.sum(np.exp(1j * self.omega)) / self.N
 
     def KURA(self, t, omega):
         """
-        Calculates the derivative of the phase for each oscillator at a given time.
+        Fonction définissant le modèle de Kuramoto.
 
-        Args:
-        - t (float): Time.
-        - omega (ndarray): Array of phase values for each oscillator.
+        Paramètres :
+        - t (float) : Temps.
+        - omega (ndarray) : Tableau de fréquences angulaires.
 
-        Returns:
-        - omega_dot (ndarray): Array of derivative of the phase for each oscillator.
+        Retourne :
+        - omega_dot (ndarray) : Tableau des dérivées temporelles des fréquences angulaires.
         """
         ordre = np.sum(np.exp(1j * omega)) / self.N
         omega_dot = self.pulse + self.K * \
@@ -70,14 +54,14 @@ class OSCI:
 
     def solve(self, tmax, step):
         """
-        Solves the differential equation for the given time range and step size.
+        Résoudre le modèle de Kuramoto.
 
-        Args:
-        - tmax (float): Maximum time.
-        - step (int): Number of steps.
+        Paramètres :
+        - tmax (float) : Temps maximum.
+        - step (int) : Nombre de pas de temps.
 
-        Returns:
-        - sol (scipy.integrate.OdeSolution): Solution of the differential equation.
+        Retourne :
+        - sol (scipy.integrate.OdeSolution) : Solution de l'équation différentielle.
         """
         t = np.linspace(0, tmax, step)
 
@@ -92,10 +76,10 @@ class OSCI:
 
     def get_abs_ordre(self):
         """
-        Calculates the absolute values of the order parameter at specific time points.
+        Calcule la valeur absolue du paramètre d'ordre.
 
-        Returns:
-        - abs_list (ndarray): Array of absolute values of the order parameter.
+        Retourne :
+        - abs_list (ndarray) : Tableau des valeurs absolues du paramètre d'ordre.
         """
         self.abs_list = np.abs(
             np.sum(np.exp(1j * self.sol.y[:, self.sol.t >= 50]), axis=0)) / self.N
@@ -104,13 +88,13 @@ class OSCI:
 
 def main_compute(args):
     """
-    Main computation function.
+    Fonction principale de calcul.
 
-    Args:
-    - args (tuple): Tuple of arguments.
+    Paramètres :
+    - args (tuple) : Tuple d'arguments.
 
-    Returns:
-    - mean_abs_tot (ndarray): Array of mean absolute values of the order parameter.
+    Retourne :
+    - mean_abs_tot (ndarray) : Tableau des valeurs absolues moyennes du paramètre d'ordre.
     """
     k_list, N, Nrep, process_id = args
 
@@ -150,7 +134,7 @@ if __name__ == '__main__':
         delayed(main_compute)(inp) for inp in inputs)
 
     print("---------------------------------------------------------------------------")
-    print("Pool finished in {:.2f} seconds".format(time.time() - start_time))
+    print(f"Pool finished in {time.time() - start_time:.2f} seconds")
 
     # Théorie : Limite thermodynamique
     g_prime_prime = -1/np.sqrt(2*np.pi)

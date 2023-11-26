@@ -7,25 +7,25 @@ np.random.seed(40)
 
 class OSCI:
     """
-    Represents a system of oscillators.
+    Représente un système d'oscillateurs.
 
-    Attributes:
-    N (int): The number of oscillators.
-    K (float): The coupling strength.
-    t_n (float): The current time.
-    pulse (ndarray): The pulse values for each oscillator.
-    omega (ndarray): The phase angles of the oscillators.
-    ordre (complex): The order parameter of the system.
-    abs_list (ndarray): The list of absolute values of the order parameter at each time step.
+    Attributs:
+    N (int): Le nombre d'oscillateurs.
+    K (float): La force de couplage.
+    t_n (float): Le temps actuel.
+    pulse (ndarray): Les valeurs d'impulsion pour chaque oscillateur.
+    omega (ndarray): Les angles de phase des oscillateurs.
+    ordre (complex): Le paramètre d'ordre du système.
+    abs_list (ndarray): La liste des valeurs absolues du paramètre d'ordre à chaque pas de temps.
     """
 
     def __init__(self, N, K):
         """
-        Initializes the OSCI class with the given parameters.
+        Initialise la classe OSCI avec les paramètres donnés.
 
-        Parameters:
-        N (int): The number of oscillators.
-        K (float): The coupling strength.
+        Paramètres:
+        N (int): Le nombre d'oscillateurs.
+        K (float): La force de couplage.
         """
         self.N = N
         self.K = K
@@ -42,14 +42,14 @@ class OSCI:
 
     def KURA(self, t, omega):
         """
-        Calculates the derivative of the phase angles of the oscillators.
+        Calcule la dérivée des angles de phase des oscillateurs.
 
-        Parameters:
-        t (float): The current time.
-        omega (ndarray): The current phase angles of the oscillators.
+        Paramètres:
+        t (float): Le temps actuel.
+        omega (ndarray): Les angles de phase actuels des oscillateurs.
 
-        Returns:
-        ndarray: The derivative of the phase angles of the oscillators.
+        Retourne:
+        ndarray: La dérivée des angles de phase des oscillateurs.
         """
         ordre = np.sum(np.exp(1j * omega)) / self.N
         self.abs_list = np.append(self.abs_list, np.abs(ordre))
@@ -59,14 +59,14 @@ class OSCI:
 
     def solve(self, tmax, step):
         """
-        Solves the differential equation for the given time range.
+        Résout l'équation différentielle pour la plage de temps donnée.
 
-        Parameters:
-        tmax (float): The maximum time to solve for.
-        step (int): The number of time steps to use.
+        Paramètres:
+        tmax (float): Le temps maximum à résoudre.
+        step (int): Le nombre de pas de temps à utiliser.
 
-        Returns:
-        OdeResult: The solution of the differential equation.
+        Retourne:
+        OdeResult: La solution de l'équation différentielle.
         """
         t = np.linspace(self.t_n, tmax, step)
 
@@ -79,40 +79,12 @@ class OSCI:
 
         return sol
 
-    def graph(self):
-        """
-        Plots the current state of the oscillators.
-
-        Creates a scatter plot of the current state of the oscillators, with the x-axis representing the cosine of the oscillator's phase and the y-axis representing the sine of the oscillator's phase. The plot also includes a circle with radius 1 centered at the origin, which represents the unit circle. The current order parameter is plotted as a green dot, and the current value of K and t_n are included in the plot title. The resulting plot is saved as a PDF file and displayed.
-        """
-        circle = plt.Circle((0, 0), 1, fill=False, color='r')
-        fig, axs = plt.subplots(1, 2)
-        axs[0].add_artist(circle)
-        axs[0].set_xlim(-1.5, 1.5)
-        axs[0].set_ylim(-1.5, 1.5)
-        axs[0].scatter(np.cos(self.omega), np.sin(self.omega), color='b')
-        axs[0].scatter(np.real(self.ordre), np.imag(self.ordre), color='g')
-        axs[0].set_aspect('equal')
-        axs[0].grid(True, which='both')
-        axs[0].set_title(f'K = {self.K} and t = {self.t_n}')
-        axs[0].set_xlabel(r'$\cos$ and $real$')
-        axs[0].set_ylabel(r'$\sin$ and $imag$')
-        axs[1].plot(np.linspace(0, self.t_n, len(
-            self.abs_list)), self.abs_list)
-        axs[1].set_xlabel('t')
-        axs[1].set_ylabel('abs(ordre)')
-        axs[1].set_title('$r(t)$')
-        axs[1].set_aspect('equal')
-        plt.tight_layout()
-        # plt.savefig(f'kura4_{self.N}.pdf')
-        plt.show()
-
     def get_abs_ordre(self):
         """
-        Returns the list of absolute values of the order parameter at each time step.
+        Retourne la liste des valeurs absolues du paramètre d'ordre à chaque pas de temps.
 
-        Returns:
-        ndarray: The list of absolute values of the order parameter.
+        Retourne:
+        ndarray: La liste des valeurs absolues du paramètre d'ordre.
         """
         return self.abs_list
 
@@ -121,11 +93,12 @@ for k in np.linspace(1, 2, 6):
     oscis = OSCI(100, k)
     sol = oscis.solve(100, 201)
     tmp = oscis.get_abs_ordre()
-    plt.plot(np.linspace(0, 100, len(tmp)), tmp, label=f'K = {k}')
+    plt.plot(np.linspace(0, 100, len(tmp)), tmp, label=f'{k}')
 
-plt.xlabel('t')
-plt.ylabel('abs(ordre)')
-plt.legend()
+plt.xlabel(r'$t$')
+plt.ylabel(r'$|r|$')
+plt.legend(title=r'$K =$', bbox_to_anchor=(1.05, 1), loc='upper left')
+plt.title(r'Évolution de $|r|$ en fonction de $t$')
 plt.tight_layout()
 plt.savefig('kura4.pdf')
 plt.show()

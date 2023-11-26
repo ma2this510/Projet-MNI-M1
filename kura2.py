@@ -7,43 +7,43 @@ np.random.seed(40)
 
 class OSCI:
     """
-    A class representing a system of oscillators.
+    Une classe représentant un système d'oscillateurs.
 
-    Attributes
+    Attributs
     ----------
     N : int
-        The number of oscillators in the system.
+        Le nombre d'oscillateurs dans le système.
     K : float
-        The coupling strength between oscillators.
+        La force de couplage entre les oscillateurs.
     t_n : float
-        The current time of the system.
+        Le temps actuel du système.
     pulse : numpy.ndarray
-        An array of random values representing the initial pulse of each oscillator.
+        Un tableau de valeurs aléatoires représentant l'impulsion initiale de chaque oscillateur.
     omega : numpy.ndarray
-        An array of random values representing the initial frequency of each oscillator.
+        Un tableau de valeurs aléatoires représentant la fréquence initiale de chaque oscillateur.
     ordre : complex
-        The order parameter of the system, calculated as the average of the complex exponential of the oscillator frequencies.
+        Le paramètre d'ordre du système, calculé comme la moyenne de l'exponentielle complexe des fréquences des oscillateurs.
 
-    Methods
+    Méthodes
     -------
     KURA(t, omega)
-        Calculates the derivative of the oscillator frequencies at a given time t and frequency omega.
+        Calcule la dérivée des fréquences des oscillateurs à un temps donné t et une fréquence omega.
     solve(tmax, step)
-        Solves the system using the KURA function and the Runge-Kutta 45 method.
+        Résout le système en utilisant la fonction KURA et la méthode Runge-Kutta 45.
     graph()
-        Plots the current state of the system on a complex plane and saves the plot as a PDF file.
+        Trace l'état actuel du système sur un plan complexe et enregistre le graphique au format PDF.
     """
 
     def __init__(self, N, K):
         """
-        Initializes the OSCI class.
+        Initialise la classe OSCI.
 
-        Parameters
+        Paramètres
         ----------
         N : int
-            The number of oscillators in the system.
+            Le nombre d'oscillateurs dans le système.
         K : float
-            The coupling strength between oscillators.
+            La force de couplage entre les oscillateurs.
         """
         self.N = N
         self.K = K
@@ -54,19 +54,19 @@ class OSCI:
 
     def KURA(self, t, omega):
         """
-        Calculates the derivative of the oscillator frequencies at a given time t and frequency omega.
+        Calcule la dérivée des fréquences des oscillateurs à un temps donné t et une fréquence omega.
 
-        Parameters
+        Paramètres
         ----------
         t : float
-            The current time of the system.
+            Le temps actuel du système.
         omega : numpy.ndarray
-            An array of values representing the current frequency of each oscillator.
+            Un tableau de valeurs représentant la fréquence actuelle de chaque oscillateur.
 
-        Returns
+        Retour
         -------
         numpy.ndarray
-            An array of values representing the derivative of the frequency of each oscillator.
+            Un tableau de valeurs représentant la dérivée de la fréquence de chaque oscillateur.
         """
         ordre = np.sum(np.exp(1j * omega)) / self.N
         omega_dot = self.pulse + self.K * \
@@ -75,19 +75,19 @@ class OSCI:
 
     def solve(self, tmax, step):
         """
-        Solves the system using the KURA function and the Runge-Kutta 45 method.
+        Résout le système en utilisant la fonction KURA et la méthode Runge-Kutta 45.
 
-        Parameters
+        Paramètres
         ----------
         tmax : float
-            The maximum time to solve the system for.
+            Le temps maximum pour résoudre le système.
         step : int
-            The number of steps to use in the solver.
+            Le nombre d'étapes à utiliser dans le solveur.
 
-        Returns
+        Retour
         -------
         scipy.integrate.OdeResult
-            An object containing the solution of the system.
+            Un objet contenant la solution du système.
         """
         t = np.linspace(self.t_n, tmax, step)
         sol = solve_ivp(fun=self.KURA, t_span=(
@@ -100,7 +100,7 @@ class OSCI:
 
     def graph(self):
         """
-        Plots the current state of the system on a complex plane and saves the plot as a PDF file.
+        Trace l'état actuel du système sur un plan complexe et enregistre le graphique au format PDF.
         """
         circle = plt.Circle((0, 0), 1, fill=False, color='r')
         fig, ax = plt.subplots()
@@ -111,7 +111,7 @@ class OSCI:
         ax.scatter(np.real(self.ordre), np.imag(self.ordre), color='g')
         ax.set_aspect('equal')
         ax.grid(True, which='both')
-        ax.set_title(f'K = {self.K} and t = {self.t_n}')
+        ax.set_title(f'K = {self.K} et t = {self.t_n}')
         # plt.savefig(f'kura2_{self.N}.pdf')
         plt.show()
 
