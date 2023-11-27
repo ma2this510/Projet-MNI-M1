@@ -1,6 +1,5 @@
 /**
- * This file contains the implementation of the FPUT class and its main
- * function.
+ * Ce fichier contient l'implémentation de la classe FPUT et de sa fonction principale.
  */
 
 #include <cmath>
@@ -14,24 +13,24 @@ typedef struct {
 } double2;
 
 /**
- * The FPUT class represents the Fermi-Pasta-Ulam-Tsingou (FPUT) system.
+ * La classe FPUT représente le système Fermi-Pasta-Ulam-Tsingou (FPUT).
  */
 class FPUT {
-  int N;                /**< The number of particles in the system. */
-  double alpha;         /**< The alpha parameter of the system. */
-  double A;             /**< The A parameter of the system. */
-  vector<double2> par;  /**< The positions and velocities of the particles. */
-  vector<double> omega; /**< The angular frequencies of the particles. */
+  int N;                /**< Le nombre de particules dans le système. */
+  double alpha;         /**< Le paramètre alpha du système. */
+  double A;             /**< Le paramètre A du système. */
+  vector<double2> par;  /**< Les positions et vitesses des particules. */
+  vector<double> omega; /**< Les fréquences angulaires des particules. */
   vector<vector<double>>
-      A_mat; /**< The matrix used in the calculation of energies. */
+      A_mat; /**< La matrice utilisée dans le calcul des énergies. */
 
 public:
   /**
-   * Constructs a new FPUT object.
+   * Construit un nouvel objet FPUT.
    *
-   * n The number of particles in the system.
-   * a The A parameter of the system.
-   * al The alpha parameter of the system.
+   * n Le nombre de particules dans le système.
+   * a Le paramètre A du système.
+   * al Le paramètre alpha du système.
    */
   FPUT(int n, double a, double al) {
     N = n;
@@ -54,9 +53,9 @@ public:
   }
 
   /**
-   * Calculates the total energy of the system.
+   * Calcule l'énergie totale du système.
    *
-   * return The total energy of the system.
+   * return L'énergie totale du système.
    */
   double energie_tot() {
     double E = 0.0;
@@ -71,9 +70,9 @@ public:
   }
 
   /**
-   * Calculates the energies of the system's modes.
+   * Calcule les énergies des modes du système.
    *
-   * return A vector containing the energies of the system's modes.
+   * return Un vecteur contenant les énergies des modes du système.
    */
   vector<double> energie_modes() {
     vector<double> Q(N + 1);
@@ -99,9 +98,9 @@ public:
 };
 
 /**
- * The main function.
+ * La fonction principale.
  *
- * return The exit status of the program.
+ * return Le code de sortie du programme.
  */
 int main() {
   FPUT fput1(32, 1.0, 0.0);

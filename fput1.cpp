@@ -1,6 +1,6 @@
 /**
  * file fput1.cpp
- * Implementation of the FPUT class and its main function.
+ * Implémentation de la classe FPUT et de sa fonction principale.
  */
 
 #include <cmath>
@@ -15,20 +15,20 @@ typedef struct {
 
 /**
  * class FPUT
- * Class representing the Fermi-Pasta-Ulam-Tsingou (FPUT) system.
+ * Classe représentant le système Fermi-Pasta-Ulam-Tsingou (FPUT).
  */
 class FPUT {
-  int N;               /**< Number of particles */
-  double alpha;        /**< Nonlinear coefficient */
+  int N;               /**< Nombre de particules */
+  double alpha;        /**< Coefficient non linéaire */
   double A;            /**< Amplitude */
-  vector<double2> par; /**< Vector of particle positions and velocities */
+  vector<double2> par; /**< Vecteur des positions et vitesses des particules */
 
 public:
   /**
-   * Constructor for the FPUT class.
-   * param n Number of particles
+   * Constructeur de la classe FPUT.
+   * param n Nombre de particules
    * param a Amplitude
-   * param al Nonlinear coefficient
+   * param al Coefficient non linéaire
    */
   FPUT(int n, double a, double al) {
     N = n;
@@ -43,8 +43,8 @@ public:
   }
 
   /**
-   * Calculate the total energy of the FPUT system.
-   * return Total energy of the system
+   * Calcule l'énergie totale du système FPUT.
+   * return L'énergie totale du système
    */
   double energie_tot() {
     double E = 0.0;
@@ -60,8 +60,8 @@ public:
 };
 
 /**
- * Main function.
- * return Exit status
+ * Fonction principale.
+ * return Code de sortie
  */
 int main() {
   FPUT fput1(32, 1.0, 0.0);

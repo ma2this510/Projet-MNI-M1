@@ -1,7 +1,7 @@
 /**
  * fput3.cpp
- * Implementation of the FPUT class and main function for simulating the
- * Fermi-Pasta-Ulam-Tsingou (FPUT) system.
+ * Implémentation de la classe FPUT et de la fonction principale pour simuler le
+ * système Fermi-Pasta-Ulam-Tsingou (FPUT).
  */
 
 #include <cmath>
@@ -17,29 +17,29 @@ typedef struct {
 
 /**
  * FPUT
- * Class representing the Fermi-Pasta-Ulam-Tsingou (FPUT) system.
+ * Classe représentant le système Fermi-Pasta-Ulam-Tsingou (FPUT).
  */
 class FPUT {
 public:
-  int N;                /**< Number of particles */
-  double alpha = 0.25;  /**< Nonlinearity parameter */
-  vector<double2> par;  /**< Vector of particle positions and velocities */
-  vector<double2> parn; /**< Vector of particle positions and velocities at the
-                           next time step */
-  vector<double> Ek;    /**< Vector of kinetic energies */
-  vector<double> omega; /**< Vector of angular frequencies */
-  vector<vector<double>> AA; /**< Matrix of coefficients */
-  double nrj = 0;            /**< Total energy of the system */
-  double ampli = 0;          /**< Amplitude of the initial displacement */
-  double pi = acos(-1);      /**< Value of pi */
-  double Deltat = 0.01;      /**< Time step size */
+  int N;                /**< Nombre de particules */
+  double alpha = 0.25;  /**< Paramètre de non-linéarité */
+  vector<double2> par;  /**< Vecteur des positions et vitesses des particules */
+  vector<double2> parn; /**< Vecteur des positions et vitesses des particules au
+                           prochain pas de temps */
+  vector<double> Ek;    /**< Vecteur des énergies cinétiques */
+  vector<double> omega; /**< Vecteur des fréquences angulaires */
+  vector<vector<double>> AA; /**< Matrice des coefficients */
+  double nrj = 0;            /**< Énergie totale du système */
+  double ampli = 0;          /**< Amplitude du déplacement initial */
+  double pi = acos(-1);      /**< Valeur de pi */
+  double Deltat = 0.01;      /**< Taille du pas de temps */
 
   /**
-   * Constructor for the FPUT class.
-   * param n Number of particles
-   * param Alpha Nonlinearity parameter
-   * param ampli Amplitude of the initial displacement
-   * param Deltat Time step size
+   * Constructeur de la classe FPUT.
+   * param n Nombre de particules
+   * param Alpha Paramètre de non-linéarité
+   * param ampli Amplitude du déplacement initial
+   * param Deltat Taille du pas de temps
    */
   FPUT(int n, double Alpha, double ampli, double Deltat)
       : N(n), alpha(Alpha), ampli(ampli), Deltat(Deltat) {
@@ -62,8 +62,8 @@ public:
   }
 
   /**
-   * Calculates the total energy of the system.
-   * return Total energy of the system
+   * Calcule l'énergie totale du système.
+   * return Énergie totale du système
    */
   double calculE() {
     double E = 0.0;
@@ -78,8 +78,8 @@ public:
   }
 
   /**
-   * Calculates the kinetic energies of the particles.
-   * return Vector of kinetic energies
+   * Calcule les énergies cinétiques des particules.
+   * return Vecteur des énergies cinétiques
    */
   vector<double> calculEk() {
     vector<double> Q(N + 1);
@@ -102,15 +102,15 @@ public:
   }
 
   /**
-   * Calculates the force acting on a particle.
-   * param x Position of the particle
-   * return Force acting on the particle
+   * Calcule la force agissant sur une particule.
+   * param x Position de la particule
+   * return Force agissant sur la particule
    */
   double force(double x) { return (-x - alpha * x * x); }
 
   /**
-   * @brief Performs the Verlet integration to update the particle positions and
-   * velocities.
+   * @brief Effectue l'intégration de Verlet pour mettre à jour les positions et
+   * vitesses des particules.
    */
   void verlet() {
     double Deltat2 = Deltat * Deltat;
@@ -134,34 +134,33 @@ public:
 };
 
 /**
- * Main function for running the simulation.
- * return Exit status of the program
+ * Fonction principale pour exécuter la simulation.
+ * return Code de sortie du programme
  */
 int main() {
-  cout << "Starting Simulation" << endl;
-  int N = 32;           /**< Number of particles */
-  int Nsteps = 100000;  /**< Number of simulation steps */
-  double pi = acos(-1); /**< Value of pi */
-  double DeltaT = 0.1;  /**< Time step size */
+  cout << "Démarrage de la simulation" << endl;
+  int N = 32;           /**< Nombre de particules */
+  int Nsteps = 100000;  /**< Nombre d'étapes de simulation */
+  double pi = acos(-1); /**< Valeur de pi */
+  double DeltaT = 0.1;  /**< Taille du pas de temps */
   FPUT fput(N, 0.25, 1.0, DeltaT);
 
-  // Write to energies_alpha.dat
+  // Écrire dans energies_alpha.dat
   ofstream file("energies_alpha.dat");
 
   for (int i = 0; i < Nsteps; i++) {
     fput.verlet();
-    // Needed ?
     fput.nrj = fput.calculE();
     fput.Ek = fput.calculEk();
 
     if (i % 100 == 0) {
-      cout << "Step " << i << " done" << endl;
+      cout << "Étape " << i << " terminée" << endl;
       file << i << "\t" << fput.nrj << "\t" << fput.Ek[1] << "\t" << fput.Ek[2]
            << "\t" << fput.Ek[3] << "\t" << fput.Ek[4] << endl;
     }
   }
 
-  cout << "Simulation done" << endl;
+  cout << "Simulation terminée" << endl;
 
   file.close();
   return (0);
