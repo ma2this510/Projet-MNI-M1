@@ -1,5 +1,6 @@
 /**
- * Ce fichier contient l'implémentation de la classe FPUT et de sa fonction principale.
+ * Ce fichier contient l'implémentation de la classe FPUT et de sa fonction
+ * principale.
  */
 
 #include <cmath>
@@ -90,9 +91,8 @@ public:
       }
 
       Ek[k] += pow(Q_dot[k], 2) / 2.0 + pow(omega[k], 2) * pow(Q[k], 2) / 2.0;
-    
     }
-    
+
     return Ek;
   }
 };
