@@ -126,8 +126,8 @@ for i, k in enumerate(k_list):
 # Tracé de abs(ordre) en fonction de K
 plt.plot(k_list, abs_tot)
 plt.xlabel(r'$K$')
-plt.ylabel(r'$| r |$')
-plt.title(r'Moyenne de $| r |$ en fonction de $K$')
+plt.ylabel(r'$r$')
+plt.title(r'$r$ en fonction de $K$')
 plt.tight_layout()
 plt.savefig('kura5.pdf')
 plt.show()

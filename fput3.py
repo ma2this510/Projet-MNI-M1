@@ -17,7 +17,7 @@ df['ek2'] = df['ek2'] * 100
 df['ek3'] = df['ek3'] * 100
 
 # Conversion du temps en unités de w_1 t / 2pi
-df['x'] = np.sin(np.pi/(2*N)) * df['t'] / np.pi
+df['x'] = np.sin(np.pi/(2*N)) * df['t'] / (10*np.pi)
 
 # Tracé des graphiques
 plt.plot(df['x'], df['energy'], label='Total energy')
@@ -27,10 +27,10 @@ plt.plot(df['x'], df['ek2'], label='Kinetic energy 3')
 plt.plot(df['x'], df['ek3'], label='Kinetic energy 4')
 
 # Légende
-plt.text(1450, 7, r'$1$', color='C1', fontsize=14)
-plt.text(715, 6, r'$2$', color='C2', fontsize=14)
-plt.text(970, 4, r'$3$', color='C3', fontsize=14)
-plt.text(315, 3.2, r'$4$', color='C4', fontsize=14)
+plt.text(145, 7, r'$1$', color='C1', fontsize=14)
+plt.text(71.5, 6, r'$2$', color='C2', fontsize=14)
+plt.text(97, 4, r'$3$', color='C3', fontsize=14)
+plt.text(31.5, 3.2, r'$4$', color='C4', fontsize=14)
 
 # Paramètres du graphique
 plt.xlabel(r'$w_1 t /2\pi$')

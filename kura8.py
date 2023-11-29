@@ -166,10 +166,10 @@ if __name__ == '__main__':
                 linestyle='--', linewidth=2, alpha=0.5)
     plt.plot(k_list, r(k_list), label='Théorie', color='k',
              linestyle='--', linewidth=2, alpha=0.5)
-    plt.xlabel('K')
-    plt.ylabel('abs(ordre)')
+    plt.xlabel(r'K')
+    plt.ylabel(r'r')
     plt.legend()
-    plt.title('Moyenne de abs(ordre) en fonction de K')
+    plt.title(r'Moyenne de $r$ en fonction de $K$')
     plt.tight_layout()
     plt.savefig('kura8.pdf')
     plt.show()

@@ -162,9 +162,9 @@ if __name__ == '__main__':
     plt.plot(k, r_approx(k), label='Théorie Approximation',
              color='k', linestyle='--', linewidth=2, alpha=0.5)
     plt.xlabel('K')
-    plt.ylabel(r'$|r(K)|$')
+    plt.ylabel(r'$r(K)$')
     plt.legend()
-    plt.title(r'Moyenne de $|r(K)|$ en fonction de $K$')
+    plt.title(r'Moyenne de $r(K)$ en fonction de $K$')
     plt.tight_layout()
     plt.savefig('kura9.pdf')
     plt.show()

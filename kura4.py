@@ -96,9 +96,9 @@ for k in np.linspace(1, 2, 6):
     plt.plot(np.linspace(0, 100, len(tmp)), tmp, label=f'{k}')
 
 plt.xlabel(r'$t$')
-plt.ylabel(r'$|r|$')
+plt.ylabel(r'$r$')
 plt.legend(title=r'$K =$', bbox_to_anchor=(1.05, 1), loc='upper left')
-plt.title(r'Évolution de $|r|$ en fonction de $t$')
+plt.title(r'Évolution de $r$ en fonction de $t$')
 plt.tight_layout()
 plt.savefig('kura4.pdf')
 plt.show()

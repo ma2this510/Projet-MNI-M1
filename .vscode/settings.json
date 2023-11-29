@@ -1,0 +1,6 @@
+{
+    "files.associations": {
+        "*.mongodb": "mongodb",
+        "ostream": "cpp"
+    }
+}

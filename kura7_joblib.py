@@ -152,9 +152,9 @@ if __name__ == '__main__':
     for i, result in enumerate(outputs):
         plt.plot(k_list, result, label=f"N = {N_list[i]}", marker='o')
     plt.xlabel(r'$K$')
-    plt.ylabel(r'$| r |$')
+    plt.ylabel(r'$r$')
     plt.legend()
-    plt.title(r'Moyenne de $| r |$ en fonction de $K$')
+    plt.title(r'Moyenne de $r$ en fonction de $K$')
     plt.tight_layout()
     plt.savefig('kura7.pdf')
     plt.show()
