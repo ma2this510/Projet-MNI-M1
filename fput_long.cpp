@@ -32,7 +32,7 @@ public:
   double nrj = 0;            /**< Énergie totale du système */
   double ampli = 0;          /**< Amplitude du déplacement initial */
   double pi = acos(-1);      /**< Valeur de pi */
-  double Deltat;     /**< Taille du pas de temps */
+  double Deltat;             /**< Taille du pas de temps */
 
   /**
    * Constructeur de la classe FPUT.
@@ -139,9 +139,9 @@ public:
  */
 int main() {
   cout << "Démarrage de la simulation" << endl;
-  int N = 32;           /**< Nombre de particules */
-  int Nsteps = 30*100000;  /**< Nombre d'étapes de simulation */
-  double DeltaT = 0.1;  /**< Taille du pas de temps */
+  int N = 32;               /**< Nombre de particules */
+  int Nsteps = 30 * 100000; /**< Nombre d'étapes de simulation */
+  double DeltaT = 0.1;      /**< Taille du pas de temps */
   FPUT fput(N, 0.25, 1.0, DeltaT);
 
   // Écrire dans energies_alpha.dat
@@ -153,9 +153,9 @@ int main() {
     fput.Ek = fput.calculEk();
 
     if (i % 100 == 0) {
-    //   cout << "Étape " << i << " terminée" << endl;
-      file << i*DeltaT << "\t" << fput.nrj << "\t" << fput.Ek[1] << "\t" << fput.Ek[2]
-           << "\t" << fput.Ek[3] << "\t" << fput.Ek[4] << endl;
+      //   cout << "Étape " << i << " terminée" << endl;
+      file << i * DeltaT << "\t" << fput.nrj << "\t" << fput.Ek[1] << "\t"
+           << fput.Ek[2] << "\t" << fput.Ek[3] << "\t" << fput.Ek[4] << endl;
     }
   }
 
