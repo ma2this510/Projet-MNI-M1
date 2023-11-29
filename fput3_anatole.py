@@ -16,7 +16,7 @@ df['ek1'] = df['ek1'] * 100
 df['ek2'] = df['ek2'] * 100
 df['ek3'] = df['ek3'] * 100
 
-# Conversion du temps en unités de w_1 t / 
+# Conversion du temps en unités de w_1 t /
 df['x'] = np.sin(np.pi/(2*N)) * df['t'] / (10*np.pi)
 A = np.array(df)
 # Tracé des graphiques
@@ -37,5 +37,5 @@ plt.xlabel(r'$w_1 t /2\pi$')
 plt.ylabel(r'$E_k \times 10^2$')
 plt.title("Evolution of the energies for $\\alpha = 0.25$")
 plt.tight_layout()
-plt.savefig('fput_0.25_30.pdf',dpi=300)
+plt.savefig('fput_0.25_30.pdf', dpi=300)
 plt.show()
