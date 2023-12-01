@@ -153,7 +153,8 @@ if __name__ == '__main__':
 
     # Graphique
     for i, result in enumerate(outputs):
-        plt.plot(k_list, result, label=f"$N = {N_list[i]}$ et $N_r = {Nrep_list[i]}$", marker='x')
+        plt.plot(k_list, result,
+                 label=f"$N = {N_list[i]}$ et $N_r = {Nrep_list[i]}$", marker='x')
 
     plt.axvline(x=k_c, label=r'$K_c$', color='r',
                 linestyle='--', linewidth=2, alpha=0.5)
