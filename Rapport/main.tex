@@ -74,7 +74,7 @@ enfin
 \end{figure}
 
 \subsection*{Question 3}
-Pour $K=0$, on remarque que les phases des l'oscillateurs sont réparties aleatoirement sur l'ensemble $[-\pi, \pi]$. Il n'y a donc aucune synchronisation entre ces oscillateurs. Au contraire, à $K=2$, les phases se regroupent et converge vers une même valeur. Ce phénomène traduit une synchronisation des oscillations.
+Pour $K=0$, on remarque que les phases des oscillateurs sont réparties aléatoirement sur l'ensemble $[-\pi, \pi]$. Il n'y a donc aucune synchronisation entre ces oscillateurs. Au contraire, à $K=2$, les phases se regroupent et converge vers une même valeur. Ce phénomène traduit une synchronisation des oscillations.
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.49\linewidth]{pics/kura3_100.jpg}
@@ -83,7 +83,7 @@ Pour $K=0$, on remarque que les phases des l'oscillateurs sont réparties aleato
 
 
 \subsection*{Question 4}
-Nos résultats restent très bruités et nécessited'être répétés afin de réduire l'impact de l'aléatoire.
+Nos résultats restent très bruités et nécessitent d'être répétés afin de réduire l'impact de l'aléatoire.
 Cependant, on remarque deux modes de fonctionnement distincts :
 \begin{itemize}
     \item Pour $K \leq 1.6$, les modes sont non synchronisés avec $r$ qui reste inférieur à $0.5$.
@@ -92,7 +92,7 @@ Cependant, on remarque deux modes de fonctionnement distincts :
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.6\linewidth]{pics/kura4.jpg}
-    \caption{Evolution temporelle de la valeur absolue du terme d'ordre complexe.}
+    \caption{Évolution temporelle de la valeur absolue du terme d'ordre complexe.}
 \end{figure}
 
 \subsection*{Question 5}
@@ -100,28 +100,28 @@ On remarque que la tendance de $r(K)$ est difficile à interpreter à cause du b
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{pics/kura5.jpg}
-    \caption{Evolution de $r$ en fonction de $K$ sans répétition.}
+    \caption{Évolution de $r$ en fonction de $K$ sans répétition.}
 \end{figure}
 
 \subsection*{Question 6}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{pics/kura6_50.jpg}
-    \caption{Evolution de $r$ en fonction de $K$ avec répétition.}
+    \caption{Évolution de $r$ en fonction de $K$ avec répétition.}
 \end{figure}
 
 \subsection*{Question 7}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{pics/kura7.jpg}
-    \caption{Evolution de $r$ en fonction de $K$ avec répétition et avec différentes tailles de systèmes.}
+    \caption{Évolution de $r$ en fonction de $K$ avec répétition et avec différentes tailles de systèmes.}
 \end{figure}
 
 \subsection*{Question 8}
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.5\linewidth]{pics/kura8.jpg}
-    \caption{Evolution de $r$ en fonction de $K$}
+    \caption{Évolution de $r$ en fonction de $K$}
 \end{figure}
 
 \subsection*{Question 9}
@@ -263,17 +263,33 @@ Pour $\alpha=0$, on ne distingue pas de fonctions de modes mais deux énergies $
 Pour $\alpha=0.25$, on obtient la figure de mode de Mary Tsingou avec l'état initial décrit dans la question 2, une évolution des modes qui tend à retourner dans l'état intial.
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{pics/fput_0.25.jpg}
+    \includegraphics[width=0.7\linewidth]{pics/fput_0.25.jpg}
     \caption{Evolution temporelle de l'énergie des quatres premiers modes}
     \label{fig:Q3}
 \end{figure}
 
 \subsection*{Question 4}
-On pourrait s'attendre à ce que l'énergie se disperse de manière plus uniforme dans les différents modes au fil du temps, plutôt que de revenir de manière significative vers le mode initial. C'est un comportement non intuitif et complexe, caractéristique des systèmes non linéaires.
+On pourrait s'attendre à ce que l'énergie se disperse de manière homogène dans les différents modes (phénomène de thermalisation selon l'hypothèse ergodique de Boltzmann). À la place, le système évolue de façon quasi-périodique, ce qui est une évolution possible des non-linéaires (systèmes chaotiques).
 \begin{figure}[H]
     \centering
-    \includegraphics[width=0.75\linewidth]{pics/fput_long.jpg}
-    \caption{Evolution temporelle de l'énergie des quatres premiers modes}
+    \includegraphics[width=0.7\linewidth]{pics/fput_long.jpg}
+    \caption{Évolution temporelle de l'énergie des quatres premiers modes}
+    \label{fig:Q4}
+\end{figure}
+
+Comment visualiser ce comportement quasi-périodique ? Si l'on tente de tracer une enveloppe cosinusienne pour l'énergie du premier mode sur l'intervalle donné (30 * 10000, question 4), cela semble correct. Cependant, lorsqu'on réalise la simulation pour (8 * 30 * 10000) et que l'on trace cette même enveloppe, celle-ci finit par devenir incorrecte, car le comportement du système est quasi-périodique, c'est-à-dire qu'il ne reboucle pas sur lui-même de façon périodique.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.6\linewidth]{pics/fput_long_courbe.jpg}
+    \caption{Évolution temporelle de l'énergie des quatres premiers modes + enveloppe du mode initiale}
+    \label{fig:Q4}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.75\linewidth]{pics/fput_long_tres_longue.jpg}
+    \caption{Évolution temporelle de l'énergie du premier mode + enveloppe}
     \label{fig:Q4}
 \end{figure}
 

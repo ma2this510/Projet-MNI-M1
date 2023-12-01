@@ -1,15 +1,15 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (MiKTeX 23.4) (preloaded format=pdflatex 2023.4.17)  1 DEC 2023 16:11
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.9.9)  1 DEC 2023 23:05
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
  %&-line parsing enabled.
-**"c:/Users/mathi/OneDrive/Documents/Etudes/2023 M1/MNI/Projet/Rapport/main.tex"
-(c:/Users/mathi/OneDrive/Documents/Etudes/2023 M1/MNI/Projet/Rapport/main.tex
-LaTeX2e <2022-11-01> patch level 1
-L3 programming layer <2023-03-30> (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/base\article.cls
-Document Class: article 2022/07/02 v1.4n Standard LaTeX document class
-(C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/base\size11.clo
-File: size11.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
+**/home/mpanet/Documents/Projet-MNI-M1/Rapport/main.tex
+(/home/mpanet/Documents/Projet-MNI-M1/Rapport/main.tex
+LaTeX2e <2021-11-15> patch level 1
+L3 programming layer <2022-01-21> (/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
+Document Class: article 2021/10/04 v1.4n Standard LaTeX document class
+(/usr/share/texlive/texmf-dist/tex/latex/base/size11.clo
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
 \c@part=\count185
 \c@section=\count186
@@ -19,135 +19,115 @@ File: size11.clo 2022/07/02 v1.4n Standard LaTeX file (size option)
 \c@subparagraph=\count190
 \c@figure=\count191
 \c@table=\count192
-\abovecaptionskip=\skip48
-\belowcaptionskip=\skip49
-\bibindent=\dimen140
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphicx.sty
+\abovecaptionskip=\skip47
+\belowcaptionskip=\skip48
+\bibindent=\dimen138
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\keyval.sty
-Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
 \KV@toks@=\toks16
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\graphics.sty
-Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/graphics\trig.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/graphics-cfg\graphics.cfg
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/graphics-def\pdftex.def
-File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2020/10/05 v1.2a Graphics/color driver for pdftex
 ))
-\Gin@req@height=\dimen141
-\Gin@req@width=\dimen142
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/generic/babel\babel.sty
-Package: babel 2023/03/28 3.87 The Babel package
+\Gin@req@height=\dimen139
+\Gin@req@width=\dimen140
+) (/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
+Package: babel 2022/01/26 3.70 The Babel package
 \babel@savecnt=\count193
-\U@D=\dimen143
-\l@unhyphenated=\language79
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/generic/babel\txtbabel.def)
+\U@D=\dimen141
+\l@unhyphenated=\language5
+ (/usr/share/texlive/texmf-dist/tex/generic/babel/txtbabel.def)
 \bbl@readstream=\read2
 \bbl@dirlevel=\count194
-
-*************************************
-* Local config file bblopts.cfg used
-*
-(C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/arabi\bblopts.cfg
-File: bblopts.cfg 2005/09/08 v0.1 add Arabic and Farsi to "declared" options of babel
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/generic/babel-french\french.ldf
-Language: french 2023/03/08 v3.5q French support from the babel system
+ (/usr/share/texlive/texmf-dist/tex/generic/babel-french/french.ldf
+Language: french 2021/07/20 v3.5m French support from the babel system
 Package babel Info: Hyphen rules for 'acadian' set to \l@french
-(babel)             (\language22). Reported on input line 91.
+(babel)             (\language3). Reported on input line 91.
 Package babel Info: Hyphen rules for 'canadien' set to \l@french
-(babel)             (\language22). Reported on input line 92.
+(babel)             (\language3). Reported on input line 92.
 \FB@nonchar=\count195
-Package babel Info: Making : an active character on input line 395.
-Package babel Info: Making ; an active character on input line 396.
-Package babel Info: Making ! an active character on input line 397.
-Package babel Info: Making ? an active character on input line 398.
+Package babel Info: Making : an active character on input line 430.
+Package babel Info: Making ; an active character on input line 431.
+Package babel Info: Making ! an active character on input line 432.
+Package babel Info: Making ? an active character on input line 433.
 \FBguill@level=\count196
 \FBold@everypar=\toks17
-\FB@Mht=\dimen144
+\FB@Mht=\dimen142
 \mc@charclass=\count197
 \mc@charfam=\count198
 \mc@charslot=\count199
 \std@mcc=\count266
 \dec@mcc=\count267
-\FB@parskip=\dimen145
-\listindentFB=\dimen146
-\descindentFB=\dimen147
-\labelindentFB=\dimen148
-\labelwidthFB=\dimen149
-\leftmarginFB=\dimen150
-\parindentFFN=\dimen151
-\FBfnindent=\dimen152
-)) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/generic/babel/locale/fr\babel-french.tex
-Package babel Info: Importing font and identification data for french
-(babel)             from babel-fr.ini. Reported on input line 11.
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/carlisle\scalefnt.sty) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/base\fontenc.sty
+\listindentFB=\dimen143
+\descindentFB=\dimen144
+\labelindentFB=\dimen145
+\labelwidthFB=\dimen146
+\leftmarginFB=\dimen147
+\parindentFFN=\dimen148
+\FBfnindent=\dimen149
+)) (/usr/share/texlive/texmf-dist/tex/latex/carlisle/scalefnt.sty) (/usr/share/texlive/texmf-dist/tex/latex/base/fontenc.sty
 Package: fontenc 2021/04/29 v2.0v Standard LaTeX package
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/generic/iftex\ifvtex.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
-Package: iftex 2022/02/03 v1.0f TeX engine tests
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
 ))
 \Gm@cnth=\count268
 \Gm@cntv=\count269
 \c@Gm@tempcnt=\count270
-\Gm@bindingoffset=\dimen153
-\Gm@wd@mp=\dimen154
-\Gm@odd@mp=\dimen155
-\Gm@even@mp=\dimen156
-\Gm@layoutwidth=\dimen157
-\Gm@layoutheight=\dimen158
-\Gm@layouthoffset=\dimen159
-\Gm@layoutvoffset=\dimen160
+\Gm@bindingoffset=\dimen150
+\Gm@wd@mp=\dimen151
+\Gm@odd@mp=\dimen152
+\Gm@even@mp=\dimen153
+\Gm@layoutwidth=\dimen154
+\Gm@layoutheight=\dimen155
+\Gm@layouthoffset=\dimen156
+\Gm@layoutvoffset=\dimen157
 \Gm@dimlist=\toks18
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/geometry\geometry.cfg)) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsmath.sty
-Package: amsmath 2022/04/08 v2.17n AMS math features
-\@mathmargin=\skip50
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2021/10/15 v2.17l AMS math features
+\@mathmargin=\skip49
 
 For additional information on amsmath, use the `?' option.
-(C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amstext.sty
+(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
 Package: amstext 2021/08/26 v2.01 AMS text
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsgen.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
 \@emptytoks=\toks19
-\ex@=\dimen161
-)) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsbsy.sty
+\ex@=\dimen158
+)) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
 Package: amsbsy 1999/11/29 v1.2d Bold Symbols
-\pmbraise@=\dimen162
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/amsmath\amsopn.sty
-Package: amsopn 2022/04/08 v2.04 operator names
+\pmbraise@=\dimen159
+) (/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 2021/08/26 v2.02 operator names
 )
 \inf@bad=\count271
 LaTeX Info: Redefining \frac on input line 234.
 \uproot@=\count272
 \leftroot@=\count273
 LaTeX Info: Redefining \overline on input line 399.
-LaTeX Info: Redefining \colon on input line 410.
 \classnum@=\count274
 \DOTSCASE@=\count275
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
-\Mathstrutbox@=\box51
-\strutbox@=\box52
-LaTeX Info: Redefining \big on input line 722.
-LaTeX Info: Redefining \Big on input line 723.
-LaTeX Info: Redefining \bigg on input line 724.
-LaTeX Info: Redefining \Bigg on input line 725.
-\big@size=\dimen163
+\Mathstrutbox@=\box50
+\strutbox@=\box51
+\big@size=\dimen160
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \macc@depth=\count276
-LaTeX Info: Redefining \bmod on input line 905.
-LaTeX Info: Redefining \pmod on input line 910.
-LaTeX Info: Redefining \smash on input line 940.
-LaTeX Info: Redefining \relbar on input line 970.
-LaTeX Info: Redefining \Relbar on input line 971.
 \c@MaxMatrixCols=\count277
 \dotsspace@=\muskip16
 \c@parentequation=\count278
@@ -157,48 +137,54 @@ LaTeX Info: Redefining \Relbar on input line 971.
 \column@=\count281
 \maxfields@=\count282
 \andhelp@=\toks21
-\eqnshift@=\dimen164
-\alignsep@=\dimen165
-\tagshift@=\dimen166
-\tagwidth@=\dimen167
-\totwidth@=\dimen168
-\lineht@=\dimen169
+\eqnshift@=\dimen161
+\alignsep@=\dimen162
+\tagshift@=\dimen163
+\tagwidth@=\dimen164
+\totwidth@=\dimen165
+\lineht@=\dimen166
 \@envbody=\toks22
-\multlinegap=\skip51
-\multlinetaggap=\skip52
+\multlinegap=\skip50
+\multlinetaggap=\skip51
 \mathdisplay@stack=\toks23
-LaTeX Info: Redefining \[ on input line 2953.
-LaTeX Info: Redefining \] on input line 2954.
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/float\float.sty
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
+) (/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
 \c@float@type=\count283
 \float@exts=\toks24
-\float@box=\box53
+\float@box=\box52
 \@float@everytoks=\toks25
-\@floatcapt=\box54
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption.sty
-Package: caption 2023/03/12 v3.6j Customizing captions (AR)
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/caption\caption3.sty
-Package: caption3 2023/03/12 v2.4 caption3 kernel (AR)
+\@floatcapt=\box53
+) (/usr/share/texlive/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2020/10/26 v3.5g Customizing captions (AR)
+ (/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2020/10/21 v2.2e caption3 kernel (AR)
+\captionmargin=\dimen167
+\captionmargin@=\dimen168
+\captionwidth=\dimen169
 \caption@tempdima=\dimen170
-\captionmargin=\dimen171
-\caption@leftmargin=\dimen172
-\caption@rightmargin=\dimen173
-\caption@width=\dimen174
-\caption@indent=\dimen175
-\caption@parindent=\dimen176
-\caption@hangindent=\dimen177
+\caption@indent=\dimen171
+\caption@parindent=\dimen172
+\caption@hangindent=\dimen173
 Package caption Info: Standard document class detected.
 Package caption Info: french babel package is loaded.
 )
 \c@caption@flags=\count284
 \c@continuedfloat=\count285
 Package caption Info: float package is loaded.
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
-File: l3backend-pdftex.def 2023-03-30 L3 backend support: PDF output (pdfTeX)
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count286
-\l__pdf_internal_box=\box55
-) (main.aux)
+\l__pdf_internal_box=\box54
+) (./main.aux
+
+LaTeX Warning: Label `fig:Q4' multiply defined.
+
+
+LaTeX Warning: Label `fig:Q4' multiply defined.
+
+)
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 18.
@@ -215,24 +201,24 @@ LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 18.
 LaTeX Font Info:    ... okay on input line 18.
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
+ (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count287
-\scratchdimen=\dimen178
-\scratchbox=\box56
+\scratchdimen=\dimen174
+\scratchbox=\box55
 \nofMPsegments=\count288
 \nofMParguments=\count289
 \everyMPshowfont=\toks26
 \MPscratchCnt=\count290
-\MPscratchDim=\dimen179
+\MPscratchDim=\dimen175
 \MPnumerator=\count291
 \makeMPintoPDFobject=\count292
 \everyMPtoPDFconversion=\toks27
-) (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
- (C:\Users\mathi\AppData\Local\Programs\MiKTeX\tex/latex/00miktex\epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2021/03/18 v2.0 Configuration of epstopdf for MiKTeX
+ (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 ))
 LaTeX Info: Redefining \degres on input line 18.
 LaTeX Info: Redefining \up on input line 18.
@@ -285,85 +271,101 @@ Package pdftex.def Info: pics/kura1_100.jpg  used on input line 64.
 (pdftex.def)             Requested size: 223.07211pt x 167.30745pt.
 [1
 
-{C:/Users/mathi/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}{C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-super-t1.enc}]
-<pics/kura2_100.jpg, id=19, 462.528pt x 346.896pt>
+{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
+<pics/kura2_100.jpg, id=20, 462.528pt x 346.896pt>
 File: pics/kura2_100.jpg Graphic file (type jpg)
 <use pics/kura2_100.jpg>
 Package pdftex.def Info: pics/kura2_100.jpg  used on input line 72.
 (pdftex.def)             Requested size: 223.07211pt x 167.30745pt.
-<pics/kura3_100.jpg, id=20, 462.528pt x 346.896pt>
+<pics/kura3_100.jpg, id=21, 462.528pt x 346.896pt>
 File: pics/kura3_100.jpg Graphic file (type jpg)
 <use pics/kura3_100.jpg>
 Package pdftex.def Info: pics/kura3_100.jpg  used on input line 80.
 (pdftex.def)             Requested size: 223.07211pt x 167.30745pt.
  [2 <./pics/kura1_10.jpg> <./pics/kura1_100.jpg> <./pics/kura2_100.jpg>]
-<pics/kura4.jpg, id=25, 462.528pt x 346.896pt>
+<pics/kura4.jpg, id=26, 462.528pt x 346.896pt>
 File: pics/kura4.jpg Graphic file (type jpg)
 <use pics/kura4.jpg>
 Package pdftex.def Info: pics/kura4.jpg  used on input line 94.
 (pdftex.def)             Requested size: 273.14923pt x 204.87329pt.
-<pics/kura5.jpg, id=26, 462.528pt x 346.896pt>
+<pics/kura5.jpg, id=27, 462.528pt x 346.896pt>
 File: pics/kura5.jpg Graphic file (type jpg)
 <use pics/kura5.jpg>
 Package pdftex.def Info: pics/kura5.jpg  used on input line 102.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
- [3{C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/cm-super/cm-super-ts1.enc} <./pics/kura3_100.jpg> <./pics/kura4.jpg>]
-<pics/kura6_50.jpg, id=31, 462.528pt x 346.896pt>
+ [3 <./pics/kura3_100.jpg> <./pics/kura4.jpg>]
+<pics/kura6_50.jpg, id=32, 462.528pt x 346.896pt>
 File: pics/kura6_50.jpg Graphic file (type jpg)
 <use pics/kura6_50.jpg>
 Package pdftex.def Info: pics/kura6_50.jpg  used on input line 109.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
-<pics/kura7.jpg, id=32, 462.528pt x 346.896pt>
+<pics/kura7.jpg, id=33, 462.528pt x 346.896pt>
 File: pics/kura7.jpg Graphic file (type jpg)
 <use pics/kura7.jpg>
 Package pdftex.def Info: pics/kura7.jpg  used on input line 116.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
-<pics/kura8.jpg, id=33, 462.528pt x 346.896pt>
+<pics/kura8.jpg, id=34, 462.528pt x 346.896pt>
 File: pics/kura8.jpg Graphic file (type jpg)
 <use pics/kura8.jpg>
 Package pdftex.def Info: pics/kura8.jpg  used on input line 123.
 (pdftex.def)             Requested size: 227.62206pt x 170.71628pt.
  [4 <./pics/kura5.jpg> <./pics/kura6_50.jpg> <./pics/kura7.jpg>] [5 <./pics/kura8.jpg>]
-<pics/kura9.jpg, id=42, 462.528pt x 346.896pt>
+<pics/kura9.jpg, id=43, 462.528pt x 346.896pt>
 File: pics/kura9.jpg Graphic file (type jpg)
 <use pics/kura9.jpg>
 Package pdftex.def Info: pics/kura9.jpg  used on input line 192.
 (pdftex.def)             Requested size: 223.07211pt x 167.30745pt.
-<pics/kura9_good.jpg, id=43, 462.528pt x 346.896pt>
+<pics/kura9_good.jpg, id=44, 462.528pt x 346.896pt>
 File: pics/kura9_good.jpg Graphic file (type jpg)
 <use pics/kura9_good.jpg>
 Package pdftex.def Info: pics/kura9_good.jpg  used on input line 198.
 (pdftex.def)             Requested size: 223.07211pt x 167.30745pt.
  [6 <./pics/kura9.jpg> <./pics/kura9_good.jpg>]
-<pics/FPUT.png, id=47, 500.62032pt x 503.63156pt>
+<pics/FPUT.png, id=48, 500.62032pt x 503.63156pt>
 File: pics/FPUT.png Graphic file (type png)
 <use pics/FPUT.png>
 Package pdftex.def Info: pics/FPUT.png  used on input line 239.
 (pdftex.def)             Requested size: 250.30954pt x 251.81516pt.
  [7 <./pics/FPUT.png>]
-<pics/fput_0.25.jpg, id=54, 462.528pt x 346.896pt>
+<pics/fput_0.25.jpg, id=55, 462.528pt x 346.896pt>
 File: pics/fput_0.25.jpg Graphic file (type jpg)
 <use pics/fput_0.25.jpg>
 Package pdftex.def Info: pics/fput_0.25.jpg  used on input line 266.
-(pdftex.def)             Requested size: 341.43307pt x 256.08499pt.
-<pics/fput_long.jpg, id=55, 462.528pt x 346.896pt>
+(pdftex.def)             Requested size: 318.66948pt x 239.01443pt.
+<pics/fput_long.jpg, id=56, 462.528pt x 346.896pt>
 File: pics/fput_long.jpg Graphic file (type jpg)
 <use pics/fput_long.jpg>
 Package pdftex.def Info: pics/fput_long.jpg  used on input line 275.
-(pdftex.def)             Requested size: 341.43307pt x 256.08499pt.
- [8 <./pics/fput_0.25.jpg>] [9 <./pics/fput_long.jpg>] (main.aux) ) 
+(pdftex.def)             Requested size: 318.66948pt x 239.01443pt.
+ [8 <./pics/fput_0.25.jpg>]
+<pics/fput_long_courbe.jpg, id=60, 433.62pt x 289.08pt>
+File: pics/fput_long_courbe.jpg Graphic file (type jpg)
+<use pics/fput_long_courbe.jpg>
+Package pdftex.def Info: pics/fput_long_courbe.jpg  used on input line 284.
+(pdftex.def)             Requested size: 273.14923pt x 182.10812pt.
+<pics/fput_long_tres_longue.jpg, id=61, 1084.05pt x 216.81pt>
+File: pics/fput_long_tres_longue.jpg Graphic file (type jpg)
+<use pics/fput_long_tres_longue.jpg>
+Package pdftex.def Info: pics/fput_long_tres_longue.jpg  used on input line 291.
+(pdftex.def)             Requested size: 341.43307pt x 68.28558pt.
+ [9 <./pics/fput_long.jpg> <./pics/fput_long_courbe.jpg> <./pics/fput_long_tres_longue.jpg>] (./main.aux)
+
+LaTeX Warning: There were multiply-defined labels.
+
+ ) 
 Here is how much of TeX's memory you used:
- 6106 strings out of 476331
- 102541 string characters out of 5787765
- 1862660 words of memory out of 5000000
- 26485 multiletter control sequences out of 15000+600000
- 522474 words of font info for 56 fonts, out of 8000000 for 9000
- 1141 hyphenation exceptions out of 8191
- 57i,14n,63p,423b,428s stack positions out of 10000i,1000n,20000p,200000b,200000s
-<C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy8.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1200.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfbx1440.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfcc1095.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1095.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1200.pfb><C:/Users/mathi/AppData/Local/Programs/MiKTeX/fonts/type1/public/cm-super/sfrm1728.pfb>
-Output written on main.pdf (9 pages, 1118570 bytes).
+ 5905 strings out of 480218
+ 97274 string characters out of 5894883
+ 410466 words of memory out of 5000000
+ 23810 multiletter control sequences out of 15000+600000
+ 479446 words of font info for 52 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 55i,14n,63p,557b,426s stack positions out of 5000i,500n,10000p,200000b,80000s
+ </home/mpanet/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/tcrm1095.600pk> </home/mpanet/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/eccc1095.600pk> </home/mpanet/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1095.600pk> </home/mpanet/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1200.600pk> </home/mpanet/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecbx1440.600pk> </home/mpanet/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1200.600pk> </home/mpanet/.texlive2021/texmf-var/fonts/pk/ljfour/jknappen/ec/ecrm1728.600pk></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb>
+Output written on main.pdf (9 pages, 3310534 bytes).
 PDF statistics:
- 128 PDF objects out of 1000 (max. 8388607)
+ 321 PDF objects out of 1000 (max. 8388607)
+ 78 compressed objects within 1 object stream
  0 named destinations out of 1000 (max. 500000)
- 71 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 81 words of extra memory for PDF output out of 10000 (max. 10000000)
 
