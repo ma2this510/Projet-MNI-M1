@@ -123,7 +123,7 @@ if __name__ == '__main__':
 
     k_list = np.linspace(1.4, 1.8, 25)
     N_list = [100, 500, 2000, 5000, 15000]
-    Nrep_list = [250, 75, 50, 40, 25]
+    Nrep_list = [300, 100, 75, 50, 30]
 
     # Calcul des moyennes
     print("Starting pool")
@@ -153,7 +153,7 @@ if __name__ == '__main__':
 
     # Graphique
     for i, result in enumerate(outputs):
-        plt.plot(k_list, result, label=f"$N = {N_list[i]}$", marker='x')
+        plt.plot(k_list, result, label=f"$N = {N_list[i]}$ et $N_r = {Nrep_list[i]}$", marker='x')
 
     plt.axvline(x=k_c, label=r'$K_c$', color='r',
                 linestyle='--', linewidth=2, alpha=0.5)
@@ -166,5 +166,5 @@ if __name__ == '__main__':
     plt.legend()
     plt.title(r'Moyenne de $r(K)$ en fonction de $K$')
     plt.tight_layout()
-    plt.savefig('kura9_good.pdf')
+    plt.savefig('kura9_good.jpg')
     plt.show()
