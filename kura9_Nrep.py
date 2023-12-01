@@ -166,5 +166,5 @@ if __name__ == '__main__':
     plt.legend()
     plt.title(r'Moyenne de $r(K)$ en fonction de $K$')
     plt.tight_layout()
-    plt.savefig('kura9_good.jpg')
+    plt.savefig('kura9_good.jpg', dpi=300)
     plt.show()
